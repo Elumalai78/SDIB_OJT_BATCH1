@@ -1,0 +1,26 @@
+echo "************************************"
+echo                                      
+echo "------------- LED3 TEST------------"
+echo                                      
+echo "***********************************"
+echo                                     
+                                         
+echo 83 > /sys/class/gpio/export         
+                                         
+echo "GPIO EXPORTED: "                   
+echo out > /sys/class/gpio/PC19/direction
+status=$(cat /sys/class/gpio/PC19/value)
+                                       
+if [ "$status" -eq 0 ]                 
+ then                                  
+    echo 0 > /sys/class/gpio/PC19/value
+    echo " LED1 ON "              
+    echo                          
+    echo "******** PASS *********"
+    echo            
+else                                    
+ echo "LED 2 NOT FOUND "               
+    echo                               
+    echo "******** FAIL *********"     
+    echo                               
+fi        

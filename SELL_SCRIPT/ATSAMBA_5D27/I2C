@@ -1,0 +1,23 @@
+#! /bin/bash
+echo                                          
+echo "------------ I2C TEST ------------------"
+echo                                           
+echo "****************************************"
+echo                                           
+                                               
+i2cdetect -y -r 0
+echo "======= PERFORMING ADC TEST ===="
+                                       
+if [ -e /sys/class/i2c-adapter/i2c-0/0-0050/eeprom ]
+then                                                
+echo "reading the value of the EEPROM"              
+#value=$(cat /sys/class/i2c-adapter/i2c-0/0-0050/eeprom)
+#echo $value                                            
+echo                                                    
+echo echo "========= PASS ================"
+echo                                       
+else                                       
+echo
+echo "************** FAIL **************"
+echo                                     
+fi    

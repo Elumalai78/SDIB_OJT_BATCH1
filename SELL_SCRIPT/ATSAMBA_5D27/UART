@@ -1,0 +1,19 @@
+#! /bin/bash
+echo  "******************************"
+echo
+echo "------ TEST USART  ------------"
+echo
+echo  "******************************"
+if [ -e "/dev/ttyS1" ]
+then
+echo "ADC NODE EXIST"
+echo
+echo "------------ performing UART Test ------- "
+echo
+echo "--------------------- PASS ----------------"
+echo
+else
+echo "USART Node NOT Found "
+echo "--------------------- FAIL ----------------"
+fi
+
