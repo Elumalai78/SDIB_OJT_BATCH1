@@ -1,0 +1,24 @@
+#! /bin/bash
+echo "***************************************************"
+echo
+echo "----------------- RS485 TEST ---------------------"
+echo
+echo "***************************************************"
+echo
+echo "-----checking for RS485----"
+echo
+
+if [ -e "/dev/ttymcx5" ]
+then
+    echo " RS485 Node exists"
+    echo
+    echo " ------ Performing 485-----"
+    echo
+    echo "************* PASS **************"
+    echo " press Ctrl+C to exit to microcom "
+    microcom -s 115200 /dev/ttymcx5
+
+else
+    echo "------ FAIL ------"
+    echo "RS485 Node not found"
+fi
