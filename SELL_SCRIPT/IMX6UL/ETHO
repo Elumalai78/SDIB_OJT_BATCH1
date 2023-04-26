@@ -1,0 +1,27 @@
+#! /bin/bash
+echo                                             
+echo "******************************************"
+echo   
+echo "---------- TEST Ethernet -----------------"
+echo                           
+echo "*******************************************"
+                               
+if [ -e "/sys/class/net/eth0" ]
+ then                     
+    echo                                  
+    echo "eth0 node exist"                               
+    echo                                                 
+    echo "cat /sys/class/net/eth0/carrier"               
+        echo "======press ctrl+c to  stop pinging======="
+    cat /sys/class/net/eth0/carrier
+                                           
+    ping google.com                        
+echo                                       
+echo " ==================pass============="
+echo                         
+else                         
+    echo "no eth0 node found"               
+echo                                        
+echo                                        
+    echo "============= FAIL =============="
+fi

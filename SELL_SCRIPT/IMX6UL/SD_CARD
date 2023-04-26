@@ -1,0 +1,28 @@
+#! /bin/bash
+echo "***************************************************"
+echo
+echo "=============== TEST SD CARD ======================"
+echo
+echo "***************************************************"
+touch /Testing/data.txt
+echo " Welcome on phytec " > data.txt
+
+if [ -e "/dev/mmcblk0" ]
+then
+  echo "SD card found on the board"
+  echo "---------mounting the sd card--------"
+  mount /dev/mmcblk0 /mnt/
+  cd /mnt/
+  echo "copying file from board to sd card"
+  cp /Testing/data.txt /mnt/
+  if [ -e "/mnt/data.txt" ]
+ then
+    echo "copying of file from board to sd card successful"
+    echo "*************PASS**********"
+fi
+#echo "SD_Card Unmount "
+ #      umount /mnt
+else
+    echo " No SD card found "
+fi
+

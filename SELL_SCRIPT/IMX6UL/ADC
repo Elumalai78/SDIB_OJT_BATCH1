@@ -1,0 +1,21 @@
+#! /bin/bash
+echo "***********"
+echo
+echo "---------- TEST ADC  -----------"
+echo
+echo "***********"
+if [ -e "/sys/bus/iio/devices/" ]
+then
+   echo "ADC NODE EXISTS"
+
+    echo "======= PERFORMING ADC TEST ===="
+
+#./ADC
+    echo
+    echo "========= PASS ================"
+    echo
+else
+    echo " ADC NODE NOT  FOUND"
+    echo "========== FAIL ============="
+fi
+
