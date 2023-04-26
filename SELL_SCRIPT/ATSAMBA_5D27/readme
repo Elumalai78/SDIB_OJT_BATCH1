@@ -1,0 +1,17 @@
+              LED RAEDME FILE
+
+This Bash shell script tests a LED connected to a GPIO pin on a Linux device.
+step 1
+exports GPIO pin 77, which means it makes the pin available for use through the filesystem.
+step 2
+sets the direction of GPIO pin PC13 to "out", which means it configures the pin as an output.
+step 3
+reads the current value of GPIO pin PC13 and stores it in a variable named "status".
+step 4
+starts a conditional block that checks if the value of the "status" variable is equal to 0.
+	LED ON
+step 5
+
+  LED  direction wrong fail
+ 
+
