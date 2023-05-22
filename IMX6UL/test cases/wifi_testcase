@@ -1,0 +1,213 @@
+									Wi-Fi testcase
+								*****************************
+Description:
+*******************
+	The i.MX6UL board can be equipped with a Wi-Fi module or a USB Wi-Fi dongle to provide wireless connectivity. The steps to set up and use Wi-Fi on the i.MX6UL board depend on the specific hardware and software configuration, but the general steps are as follows:
+
+	Install the Wi-Fi driver and firmware if necessary. This can be done using a package manager or by manually downloading and installing the appropriate driver and firmware files.
+
+prerequisite:
+***************
+
+* Any Phytec Board with images
+* staging(wilc-sdio) driver in kernel modules.
+
+Test Case:
+************
+1) To load the "wilc-sdio" kernel module into the Linux kernel.
+		$ modprobe wilc-sdio
+2) Create the wpa_supplicant.conf file in /etc partition. 
+		$ vi /etc/wpa_supplicant.conf
+3) To run the wpa_supplicant program with the nl80211 driver and connect to a wireless network specified in the /etc/wpa_supplicant.conf configuration file.
+		$ wpa_supplicant -B -Dnl80211 -i wlan0 -c /etc/wpa_supplicant.conf
+				
+			ctrl_interface=/var/run/wpa_supplicant
+			ctrl_interface_group=0
+			update_config=1
+			network={
+			ssid="<user>"
+			proto=WPA2
+			key_mgmt=WPA-PSK
+			psk="<password>"
+			}		
+4) To obtain an IP address lease for the wlan0 wireless network interface using the DHCP protocol.
+		$ udhcpc -i wlan0
+5) To ping google
+		$ ping google.com
+
+******************************************************************************************************************************************
+
+Example:
+***********
+Description
+**************
+    • Give the wifi name in above file in place of username.
+    • Give the password of your wifi in place of *********.
+    • Give the below command to connect the wifi network.
+
+root@ruggedboard-imx6ul:~#  modprobe wilc-sdio
+[  647.624096] Registering wifi device
+[  647.627903] Max scan ids= 10,Max scan IE len= 1000,Signal Type= 1,Interface Modes= 844
+[  647.691605] Initializing Locks ...
+[  647.861690] wilc_sdio mmc1:0001:1: Driver Initializing success
+root@ruggedboard-imx6ul:~# [  648.412365] wilc_sdio mmc1:0001:1 wlan0: INFO [dump_station]Dumping station information
+[  648.459809] wilc_sdio mmc1:0001:1 wlan0: ERR [wilc_send_config_pkt:1732] Get Timed out
+[  648.468433] wilc_sdio mmc1:0001:1 wlan0: Failed to get RSSI value
+[  648.557331] wilc_sdio mmc1:0001:1 wlan0: INFO [wilc_mac_open]MAC OPEN[7d763fdd] wlan0
+[  648.567334] WILC POWER UP
+[  648.571150] wilc_sdio mmc1:0001:1 wlan0: INFO [wilc_init_host_int]Host[7d763fdd][d989087c]
+[  648.597260] wilc_sdio mmc1:0001:1 wlan0: INFO [wilc_mac_open]*** re-init ***
+[  648.604771] wilc_sdio mmc1:0001:1 wlan0: INFO [wilc_wlan_init]Initializing WILC_Wlan
+[  648.629684] wilc_sdio mmc1:0001:1: SDIO speed: 50000000
+[  648.651960] wilc_sdio mmc1:0001:1: chipid 003000d0
+[  648.670837] wilc_sdio mmc1:0001:1 wlan0: INFO [init_chip]Bootrom sts = d
+[  648.687137] wilc_sdio mmc1:0001:1 wlan0: INFO [wilc_wlan_initialize]WILC Initialization done
+[  648.696031] wilc_sdio mmc1:0001:1 wlan0: INFO [wlan_initialize_threads]Initializing Threads ...
+[  648.705213] wilc_sdio mmc1:0001:1 wlan0: INFO [wlan_initialize_threads]Creating kthread for transmission
+[  648.741381] wilc_sdio mmc1:0001:1 wlan0: INFO [wlan_initialize_threads]Creating kthread for Debugging
+[  648.754404] wilc_sdio mmc1:0001:1 wlan0: INFO [wilc_wlan_get_firmware]Detect chip WILC3000
+[  648.763172] wilc_sdio mmc1:0001:1 wlan0: INFO [wilc_wlan_get_firmware]loading firmware mchp/wilc3000_wifi_firmware.bin
+[  648.774228] wilc_sdio mmc1:0001:1 wlan0: INFO [wilc_wlan_get_firmware]WLAN firmware: mchp/wilc3000_wifi_firmware.bin
+[  648.847211] wilc_sdio mmc1:0001:1 wlan0: INFO [wilc_firmware_download]Downloading Firmware ...
+[  648.856277] wilc_wlan_firmware_download: Downloading firmware size = 140360
+[  648.908815] wilc_wlan_firmware_download Offset = 120832
+[  648.920991] wilc_wlan_firmware_download Offset = 140360
+[  648.926336] wilc_sdio mmc1:0001:1 wlan0: INFO [wilc_firmware_download]Download Succeeded
+[  648.944172] wilc_sdio mmc1:0001:1 wlan0: INFO [wilc_start_firmware]Starting Firmware ...
+[  648.957535] wilc_sdio mmc1:0001:1 wlan0: INFO [wilc_start_firmware]Waiting for FW to get ready ...
+[  649.059843] wilc_wlan_cfg_indicate_rx: Info message received
+[  649.070945] wilc_sdio mmc1:0001:1 wlan0: INFO [wilc_start_firmware]Firmware successfully started
+[  649.113787] wilc_sdio mmc1:0001:1 wlan0: INFO [wilc_wlan_initialize]WILC Firmware Ver = WILC_WIFI_FW_REL_15_5 Build: 12551
+[  649.125164] wilc_sdio mmc1:0001:1 wlan0: INFO [wilc_init_fw_config]Start configuring Firmware
+[  649.304180] wilc_sdio mmc1:0001:1 wlan0: INFO [wilc_set_multicast_list]Setting mcast List with count = 1.
+[  649.375765] wilc_sdio mmc1:0001:1 wlan0: INFO [wilc_set_multicast_list]Setting mcast List with count = 2.
+[  649.406800] wilc_sdio mmc1:0001:1 wlan0: INFO [set_power_mgmt]dev [wlan0]
+[  649.414222] wilc_sdio mmc1:0001:1 wlan0: INFO [set_power_mgmt] Power save Enabled= 1 , TimeOut = -1
+[  649.449818] wilc_sdio mmc1:0001:1 wlan0: INFO [wilc_set_multicast_list]Setting mcast List with count = 3.
+[  649.546532] wilc_sdio mmc1:0001:1 wlan0: INFO [wilc_set_multicast_list]Setting mcast List with count = 4.
+[  649.588572] wilc_sdio mmc1:0001:1 wlan0: INFO [wilc_set_multicast_list]Setting mcast List with count = 5.
+[  649.623825] wilc_sdio mmc1:0001:1 wlan0: INFO [wilc_set_multicast_list]Setting mcast List with count = 6.
+[  649.690616] wilc_sdio mmc1:0001:1 wlan0: INFO [get_tx_power]Got tx power 18
+[  649.700189] wilc_sdio mmc1:0001:1 wlan0: INFO [dump_station]Dumping station information
+[  650.805159] wilc_sdio mmc1:0001:1 wlan0: INFO [wilc_set_multicast_list]Setting mcast List with count = 7.
+
+root@ruggedboard-imx6ul:~#
+root@ruggedboard-imx6ul:~#
+root@ruggedboard-imx6ul:~# cat /usr/bin/wifi-enable.sh 
+#!/bin/sh
+
+# connect with router
+wpa_supplicant -B -D nl80211 -i wlan0 -c /etc/wpa_supplicant.conf
+
+udhcpc -i wlan0
+root@ruggedboard-imx6ul:~# 
+root@ruggedboard-imx6ul:~# 
+root@ruggedboard-imx6ul:~# sh /usr/bin/wifi-enable.sh
+Successfully initialized wpa_supplicant
+[  744.793593] wilc_sdio mmc1:0001:1 wlan0: INFO [get_tx_power]Got tx power 18
+[  744.835545] wilc_sdio mmc1:0001:1 wlan0: INFO [get_tx_power]Got tx power 18
+[  744.880501] wilc_sdio mmc1:0001:1 wlan0: INFO [get_tx_power]Got tx power 18
+[  744.915549] wilc_sdio mmc1:0001:1 wlan0: INFO [get_tx_power]Got tx power 18
+nl80211: kernel reports: Authentication algorithm number required
+[  745.002678] wilc_sdio mmc1:0001:1 wlan0: INFO [get_tx_power]Got tx power 18
+[  745.034257] wilc_sdio mmc1:0001:1 wlan0: INFO [wilc_set_multicast_list]Setting mcast List with count = 6.
+[  745.056402] wilc_sdio mmc1:0001:1 wlan0: INFO [wilc_set_multicast_list]Setting mcast List with count = 5.
+[  745.069327] wilc_sdio mmc1:0001:1 wlan0: INFO [wilc_set_multicast_list]Setting mcast List with count = 4.
+[  745.079355] wilc_sdio mmc1:0001:1 wlan0: INFO [wilc_set_multicast_list]Setting mcast List with count = 3.
+[  745.121526] wilc_sdio mmc1:0001:1 wlan0: INFO [flush_pmksa]Flushing  PMKID key values
+[  745.276232] wilc_sdio mmc1:0001:1 wlan0: INFO [wilc_set_multicast_list]Setting mcast List with count = 4.
+[  745.311307] wilc_sdio mmc1:0001:1 wlan0: INFO [scan]Requested num of channel 14
+[  745.319261] wilc_sdio mmc1:0001:1 wlan0: INFO [scan]Scan Request IE len =  0
+[  745.326468] wilc_sdio mmc1:0001:1 wlan0: INFO [scan]Number of SSIDs 1
+[  745.333188] wilc_sdio mmc1:0001:1 wlan0: INFO [scan]Trigger Scan Request
+udhcpc: started, v1.33.2
+[  745.526789] wilc_sdio mmc1:0001:1 wlan0: INFO [wilc_set_multicast_list]Setting mcast List with count = 5.
+[  745.588979] wilc_sdio mmc1:0001:1 wlan0: INFO [wilc_set_multicast_list]Setting mcast List with count = 6.
+[  745.994910] wilc_sdio mmc1:0001:1 wlan0: INFO [wilc_set_multicast_list]Setting mcast List with count = 6.
+udhcpc: sending discover
+[  746.176701] wilc_sdio mmc1:0001:1 wlan0: INFO [get_tx_power]Got tx power 18
+[  746.212398] wilc_wlan_cfg_indicate_rx: Scan Notification Received
+[  746.219263] wilc_sdio mmc1:0001:1 wlan0: INFO [wilc_scan_complete_received]Scan notification received
+[  746.238377] wilc_sdio mmc1:0001:1 wlan0: INFO [cfg_scan_result]Scan Done[7d763fdd]
+[  746.343059] wilc_sdio mmc1:0001:1 wlan0: INFO [connect]Connecting to SSID [Saswati] on netdev [7d763fdd] host if [c4f2fe00]
+[  746.355385] wilc_sdio mmc1:0001:1 wlan0: INFO [connect]Adding key with cipher group fac04
+[  746.364038] wilc_sdio mmc1:0001:1 wlan0: INFO [connect]Authentication Type = 0
+[  746.371602] wilc_sdio mmc1:0001:1 wlan0: INFO [connect]In OPEN SYSTEM
+[  746.378442] wilc_sdio mmc1:0001:1 wlan0: INFO [connect]Set MFP Type 0
+[  746.384986] 
+[  746.386566] =============================
+[  746.390888] WARNING: suspicious RCU usage
+[  746.394997] 5.10.76-bsp-yocto-ampliphy-i.mx6ul-pd21.2.1 #1 Not tainted
+[  746.401830] -----------------------------
+[  746.405941] drivers/net/wireless/microchip/wilc1000/hif.c:568 suspicious rcu_dereference_check() usage!
+[  746.415619] 
+[  746.415619] other info that might help us debug this:
+[  746.415619] 
+[  746.423924] 
+[  746.423924] rcu_scheduler_active = 2, debug_locks = 1
+[  746.430728] 3 locks held by wpa_supplicant/322:
+[  746.435347]  #0: c17bfb8c (cb_lock){++++}-{3:3}, at: genl_rcv+0x14/0x34
+[  746.442564]  #1: c17ba920 (rtnl_mutex){+.+.}-{3:3}, at: nl80211_pre_doit+0x104/0x1e8
+[  746.450886]  #2: c53f1770 (&wdev->mtx){+.+.}-{3:3}, at: nl80211_connect+0x584/0x7a8
+[  746.459103] 
+[  746.459103] stack backtrace:
+[  746.463571] CPU: 0 PID: 322 Comm: wpa_supplicant Not tainted 5.10.76-bsp-yocto-ampliphy-i.mx6ul-pd21.2.1 #1
+[  746.473388] Hardware name: Freescale i.MX6 Ultralite (Device Tree)
+[  746.479683] [<c01111b8>] (unwind_backtrace) from [<c010b9dc>] (show_stack+0x10/0x14)
+[  746.487530] [<c010b9dc>] (show_stack) from [<c0ea2df8>] (dump_stack+0xdc/0x104)
+[  746.495090] [<c0ea2df8>] (dump_stack) from [<bf009cd4>] (wilc_parse_join_bss_param+0x450/0x494 [wilc_sdio])
+[  746.505324] [<bf009cd4>] (wilc_parse_join_bss_param [wilc_sdio]) from [<bf000e1c>] (connect+0x1d0/0x668 [wilc_sdio])
+[  746.516078] [<bf000e1c>] (connect [wilc_sdio]) from [<c0de55b8>] (cfg80211_connect+0x1d8/0x8d0)
+[  746.524891] [<c0de55b8>] (cfg80211_connect) from [<c0db55a8>] (nl80211_connect+0x5a0/0x7a8)
+[  746.533348] [<c0db55a8>] (nl80211_connect) from [<c0bdfae4>] (genl_rcv_msg+0x168/0x358)
+[  746.541453] [<c0bdfae4>] (genl_rcv_msg) from [<c0bdebc4>] (netlink_rcv_skb+0xc0/0x118)
+[  746.549466] [<c0bdebc4>] (netlink_rcv_skb) from [<c0bdf280>] (genl_rcv+0x20/0x34)
+[  746.557046] [<c0bdf280>] (genl_rcv) from [<c0bde240>] (netlink_unicast+0x1b0/0x314)
+[  746.564801] [<c0bde240>] (netlink_unicast) from [<c0bde55c>] (netlink_sendmsg+0x1b8/0x3f4)
+[  746.573162] [<c0bde55c>] (netlink_sendmsg) from [<c0b62a40>] (____sys_sendmsg+0x1cc/0x280)
+[  746.581524] [<c0b62a40>] (____sys_sendmsg) from [<c0b64974>] (___sys_sendmsg+0xa8/0xd4)
+[  746.589618] [<c0b64974>] (___sys_sendmsg) from [<c0b64b40>] (sys_sendmsg+0x54/0x90)
+[  746.597368] [<c0b64b40>] (sys_sendmsg) from [<c0100080>] (ret_fast_syscall+0x0/0x28)
+[  746.605190] Exception stack(0xc4715fa8 to 0xc4715ff0)
+[  746.610328] 5fa0:                   013c3808 013c2ec8 00000006 bec20858 00000000 00000000
+[  746.618595] 5fc0: 013c3808 013c2ec8 b6f01b70 00000128 bec20858 ffffffff 00000001 00000004
+[  746.626852] 5fe0: 00000128 bec20808 b6bdf15f b6b5e386
+[  746.704279] wilc_sdio mmc1:0001:1 wlan0: INFO [wilc_wlan_set_bssid]set bssid [fa:03:20:50:cc:5c]
+[  746.714901] wilc_sdio mmc1:0001:1 wlan0: INFO [wilc_send_connect_wid]send HOST_IF_WAITING_CONN_RESP
+[  746.838682] wilc_sdio mmc1:0001:1 wlan0: INFO [wilc_send_connect_wid]set state [3]
+[  747.130173] wilc_wlan_cfg_indicate_rx: Info message received
+[  747.139327] wilc_sdio mmc1:0001:1 wlan0: INFO [handle_rcvd_gnrl_async_info]Current State = 3,Received state = 1
+[  747.192802] wilc_sdio mmc1:0001:1 wlan0: INFO [cfg_connect_result]Connection response received=1 connect_stat[0]
+[  747.203369] wilc_sdio mmc1:0001:1 wlan0: INFO [cfg_connect_result]Connection Successful: BSSID: fa32050cc5c
+[  747.213503] wilc_sdio mmc1:0001:1 wlan0: INFO [cfg_connect_result]Association request info elements length = 27
+[  747.223835] wilc_sdio mmc1:0001:1 wlan0: INFO [cfg_connect_result]Association response info elements length = 116
+[  747.311417] wilc_sdio mmc1:0001:1 wlan0: INFO [get_tx_power]Got tx power 18
+[  747.397287] wilc_sdio mmc1:0001:1 wlan0: INFO [add_key]Adding key with cipher suite = fac04
+[  747.406909] wilc_sdio mmc1:0001:1 wlan0: INFO [add_key]c4eae300 c53f0000 0
+[  747.414654] wilc_sdio mmc1:0001:1 wlan0: INFO [add_key]key dc ea 53
+[  747.498665] wilc_sdio mmc1:0001:1 wlan0: INFO [add_key]Adding key with cipher suite = fac04
+[  747.507238] wilc_sdio mmc1:0001:1 wlan0: INFO [add_key]c4eae300 c53f0000 1
+[  747.515029] wilc_sdio mmc1:0001:1 wlan0: INFO [add_key]key 90 b8 1e
+[  747.636738] wilc_sdio mmc1:0001:1 wlan0: INFO [get_tx_power]Got tx power 18
+[  747.660880] wilc_sdio mmc1:0001:1 wlan0: INFO [dump_station]Dumping station information
+[  747.744714] wilc_sdio mmc1:0001:1 wlan0: INFO [wilc_set_multicast_list]Setting mcast List with count = 7.
+[  747.861578] wilc_sdio mmc1:0001:1 wlan0: INFO [wilc_set_multicast_list]Setting mcast List with count = 8.
+root@ruggedboard-imx6ul:~# 
+root@ruggedboard-imx6ul:~# ping google.com
+PING google.com (142.250.182.78): 56 data bytes
+64 bytes from 142.250.182.78: seq=0 ttl=55 time=72.592 ms
+64 bytes from 142.250.182.78: seq=1 ttl=55 time=77.852 ms
+64 bytes from 142.250.182.78: seq=4 ttl=55 time=93.796 ms
+64 bytes from 142.250.182.78: seq=5 ttl=55 time=81.929 ms
+64 bytes from 142.250.182.78: seq=7 ttl=55 time=148.951 ms
+64 bytes from 142.250.182.78: seq=9 ttl=55 time=71.309 ms
+64 bytes from 142.250.182.78: seq=10 ttl=55 time=105.928 ms
+64 bytes from 142.250.182.78: seq=12 ttl=55 time=83.082 ms
+64 bytes from 142.250.182.78: seq=13 ttl=55 time=91.171 ms
+64 bytes from 142.250.182.78: seq=14 ttl=55 time=74.412 ms
+64 bytes from 142.250.182.78: seq=15 ttl=55 time=122.640 ms
+^C
+--- google.com ping statistics ---
+16 packets transmitted, 11 packets received, 31% packet loss
+round-trip min/avg/max = 71.309/93.060/148.951 ms
+root@ruggedboard-imx6ul:~#

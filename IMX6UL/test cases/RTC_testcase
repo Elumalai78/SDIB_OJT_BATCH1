@@ -1,0 +1,62 @@
+									RTC(real time clock)
+								************************************
+Description:
+**************************
+	RTC stands for Real-Time Clock, which is a computer clock that keeps track of the current date and time even when the computer is turned off or disconnected from power. An RTC typically consists of a clock circuit, a battery backup, and a small amount of non-volatile memory to store the current date and time. The clock circuit is usually a crystal oscillator that provides a stable timing signal, while the battery backup ensures that the RTC continues to operate even when the computer is turned off or disconnected from power.
+
+prerequisite:
+***************
+
+* Any Phytec Board with images
+* RTC battery
+
+Test Case:
+************
+1) Check how many nodes are there in /dev directory for rtc
+		$ ls /dev/rtc0
+2) Set the date to board in kernel # date mmddhhminyyyy.sec (e.g 022311462023.10 ) is the syntax
+3) Set the time and check by using below command to rtc.
+       		$ hwclock -w -f /dev/rtcX
+       		$ wclock -r -f /dev/rtcX ( # here 'X' is available node numbers ).
+4) Reboot the board, wait few minutes. Check date and time both are same or not.
+
+*********************************************************************************************************************
+Example:
+*****************
+Description:
+****************
+    • To test the RTC node functionality in Kernel.
+
+ Hardware: RuggedBoard-i.MX6UL
+
+root@ruggedboard-imx6ul:~# ls /dev/rtc0
+/dev/rtc0
+root@ruggedboard-imx6ul:~# date 012316442023.00
+Mon Jan 23 16:44:00 UTC 2023
+root@ruggedboard-imx6ul:~# hwclock -w -f /dev/rtc0
+root@ruggedboard-imx6ul:~#  hwclock -r -f /dev/rtc0
+Mon Jan 23 16:44:23 2023  0.000000 seconds
+root@ruggedboard-imx6ul:~# date
+Mon Jan 23 16:44:27 UTC 2023
+root@ruggedboard-imx6ul:~# reboot
+ ___   _   _ __   __ _____  _____   ____
+|  _ \ | | | |\ \ / /|_   _|| ____| / ___|
+| |_) || |_| | \ V /   | |  |  _|  | |
+|  __/ |  _  |  | |    | |  | |___ | |___
+|_|    |_| |_|  |_|    |_|  |_____| \____|
+
+    _     __  __  ____   _      ___  ____   _   _ __   __
+   / \   |  \/  ||  _ \ | |    |_ _||  _ \ | | | |\ \ / /
+  / _ \  | |\/| || |_) || |     | | | |_) || |_| | \ V /
+ / ___ \ | |  | ||  __/ | |___  | | |  __/ |  _  |  | |
+/_/   \_\|_|  |_||_|    |_____||___||_|    |_| |_|  |_|
+
+
+ampliPHY (Phytec Base Distribution) BSP-Yocto-Ampliphy-i.MX6UL-PD21.2.1 ruggedboard-imx6ul ttymxc0
+
+ruggedboard-imx6ul login: root
+root@ruggedboard-imx6ul:~# 
+root@ruggedboard-imx6ul:~# date
+Mon Jan 23 16:48:14 UTC 2023
+
+

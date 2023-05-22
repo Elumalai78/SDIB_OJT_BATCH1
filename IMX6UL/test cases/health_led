@@ -1,0 +1,17 @@
+										HEALTH LED
+									*************************
+
+Description:
+********************
+    • To test the SOM health LED on carrier board SOM.
+
+prerequisite:
+************
+* Any Phytec Board with images
+
+Test cases:
+*************
+
+    • Boot the board and After booting check whether green led is blinking on som Module.
+
+

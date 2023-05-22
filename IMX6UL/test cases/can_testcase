@@ -1,0 +1,92 @@
+									CAN testcase
+								     *******************
+								CAN (Controller Area Network) 
+
+
+Description:
+****************
+	Check the board documentation to find out which pins are used for CAN and their voltage and speed requirements. Connect a CAN device, such as a CAN bus analyzer or another CAN device, to the CAN pins.
+
+prerequisite:
+******************
+
+    • CAN Phy should be mounted on Board.
+    • P CAN-USB Adapter
+    • CAN Adapter Driver , can-utils on host.
+
+
+Test Case:
+************
+Test Case 1 (Test with PCAN device)
+    1. Boot the board and After booting,check the interface is available or not by giving the below command.
+
+		$ ifconfig can0
+    • To Transmit packets from board to PC
+Target side:
+
+		$ ip link set can0 down
+		$ ip link set can0 type can bitrate 50000 
+		$ ip link set can0 up
+		$ cansend can0 123#1234567890
+
+Host side:
+
+		$ sudo ip link set can0 down 
+		$ sudo ip link set can0 type can bitrate 50000
+		$ sudo ip link set can0 up
+		$ candump can0
+  
+********************************************************************************************************
+Example:
+**********
+ 1. Take 2 boards and Boot the boards from NOR/MMC.
+ 2. After booting,check the interface is available or not by giving the below command.
+   
+Target side:
+*********************************************
+root@ruggedboard-imx6ul:~# 
+root@ruggedboard-imx6ul:~#  ifconfig can0
+can0      Link encap:UNSPEC  HWaddr 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  
+          UP RUNNING NOARP  MTU:16  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:10 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+          Interrupt:34 
+
+root@ruggedboard-imx6ul:~# ip link set can0 down
+root@ruggedboard-imx6ul:~# ip link set can0 type can bitrate 50000
+root@ruggedboard-imx6ul:~# ip link set can0 up
+root@ruggedboard-imx6ul:~# cansend can0 123#1232555555
+root@ruggedboard-imx6ul:~# cansend can0 123#1232555555
+root@ruggedboard-imx6ul:~# cansend can0 123#1232555555
+root@ruggedboard-imx6ul:~# cansend can0 123#1234567890
+root@ruggedboard-imx6ul:~# cansend can0 123#1234567890111213
+
+
+Host side:
+***************************************
+root@phyboard-segin-imx6ul-2:~# 
+root@phyboard-segin-imx6ul-2:~#  ifconfig can0
+can0      Link encap:UNSPEC  HWaddr 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  
+          UP RUNNING NOARP  MTU:16  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:10 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+          Interrupt:25 
+
+root@phyboard-segin-imx6ul-2:~# ip link set can0 down
+root@phyboard-segin-imx6ul-2:~# ip link set can0 type can bitrate 50000
+root@phyboard-segin-imx6ul-2:~# ip link set can0 up
+root@phyboard-segin-imx6ul-2:~# candump can0
+
+  can0  123   [5]  12 32 55 55 55
+  can0  123   [5]  12 32 55 55 55
+  can0  123   [5]  12 32 55 55 55
+  can0  123   [5]  12 34 56 78 90
+  can0  123   [8]  12 34 56 78 90 11 12 13
+  can0  123   [8]  12 34 56 78 90 11 12 13
+  can0  123   [8]  12 34 56 78 90 11 12 13
+
+

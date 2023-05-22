@@ -1,0 +1,126 @@
+									mPCIE (4G module test)
+								***************************************
+mPCIE(mini-PCI Express)
+
+Description:
+*****************
+	The mPCIe interface is designed to be compatible with the standard PCI Express interface, but with a smaller form factor. To use mPCIe, you will need a compatible host device (such as a computer or embedded system) with an mPCIe slot. 
+	
+	The mPCIe EC25 supports a variety of cellular technologies, including 4G LTE, 3G, and 2G, and can be used with a wide range of wireless carriers worldwide. It features a compact design and low power consumption, making it suitable for use in devices with limited space and power resources.  
+
+Test Case:
+************
+	• Boot the board and after booting insert the mPCIe module to the mPCIe connector.
+	• Then open the microcom and use the command as below.
+ 		$microcom -s 115200 /dev/tty<portno>
+	• Use below AT commands
+			AT
+			AT+CREG? (for checking network)
+			response 
+			0,1 --> mobile has registered in local network
+			0,2 --> is searching the signal
+			0,3 --> network is denied
+			0,5 --> network is registered in roaming
+			AT+CPIN? (for checking sim status)
+			AT+CSQ (signal strength response)
+			--> +CSQ:3,4 --> signal strength response (>20)
+			ATD<MOBILENO>; (for calling to respective contact)
+	 • For testing GSM run the below script.
+		$ vi gsm.sh
+
+			#!/bin/sh
+
+			ifconfig wwan0 down
+			echo Y > /sys/class/net/wwan0/qmi/raw_ip
+			ifconfig wwan0 up
+			qmi-network /dev/cdc-wdm0 start
+			udhcpc -i wwan0
+
+
+*****************************************************************************************************
+Example:
+***********
+Description
+*************
+
+Here we took the 4G module(EC25e) for testing the mPCIe.
+
+
+root@ruggedboard-imx6ul:~# usb 1-2: new full-speed USB device number 2 using at91_ohci
+|usb 1-2: config 1 has an invalid interface number: 8 but max is 3
+usb 1-2: config 1 has no interface number 1
+usb 1-2: New USB device found, idVendor=1199, idProduct=68c0
+usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+usb 1-2: Product: Sierra Wireless WP7608
+usb 1-2: Manufacturer: Sierra Wireless, Incorporated
+usb 1-2: SerialNumber: XG85120024011021
+qcserial 1-2:1.0: Qualcomm USB modem converter detected
+usb 1-2: Qualcomm USB modem converter now attached to ttyUSB0
+qcserial 1-2:1.2: Qualcomm USB modem converter detected
+usb 1-2: Qualcomm USB modem converter now attached to ttyUSB1
+qcserial 1-2:1.3: Qualcomm USB modem converter detected
+usb 1-2: Qualcomm USB modem converter now attached to ttyUSB2
+qmi_wwan 1-2:1.8: cdc-wdm0: USB WDM device
+qmi_wwan 1-2:1.8 wwan0: register 'qmi_wwan' at usb-at91-2, WWAN/QMI device, 9a:c1:df:e1:6f:18
+______________________________________________________________________________________________________
+root@phyboard-segin-imx6ul-6:~# microcom -s 115200 /dev/ttyUSB3
+at
+OK
+at+creg?
++CREG: 0,1
+
+OK
+at+csq
++CSQ: 22,99
+
+OK
+at+cpin?
++CPIN: READY
+
+OK
+atd7008296799;
+OK
+ath
+OK
+ata
+OK
+
+_________________________________________________________________
+
+root@ruggedboard-imx6ul:~# sh gsm.sh                                 |                             |
+Profile at '/etc/qmi-network.conf' not found...                      |  Cannot open /dev/ttyUSB0!  |
+Checking data format with 'qmicli -d /dev/cdc-wdm0 --wda-get-data-for|                             |
+Device link layer protocol retrieved: raw-ip                         +-----------------------------+
+Getting expected data format with 'qmicli -d /dev/cdc-wdm0 --get-expected-data-format'...
+Expected link layer protocol retrieved: raw-ip
+Device and kernel link layer protocol match: raw-ip
+Starting network with 'qmicli -d /dev/cdc-wdm0 --wds-start-network=apn=''  --client-no-release-cid '...
+error: couldn't parse input string: key 'apn' required a value
+Saving state at /tmp/qmi-network-state-cdc-wdm0... (CID: 19)
+Saving state at /tmp/qmi-network-state-cdc-wdm0... (PDH: 2267156672)
+Network started successfully
+udhcpc: started, v1.27.2
+udhcpc: sending discover
+udhcpc: sending select for 100.112.188.239
+udhcpc: lease of 100.112.188.239 obtained, lease time 7200
+/etc/udhcpc.d/50default: Adding DNS 125.22.47.102
+/etc/udhcpc.d/50default: Adding DNS 59.144.144.106
+root@ruggedboard-imx6ul:~# 
+root@ruggedboard-imx6ul:~# 
+root@ruggedboard-imx6ul:~# 
+root@ruggedboard-imx6ul:~# ping google.com
+PING google.com (142.250.192.110): 56 data bytes
+64 bytes from 142.250.192.110: seq=0 ttl=117 time=36.163 ms
+64 bytes from 142.250.192.110: seq=1 ttl=117 time=48.522 ms
+64 bytes from 142.250.192.110: seq=2 ttl=117 time=46.619 ms
+64 bytes from 142.250.192.110: seq=3 ttl=117 time=46.129 ms
+64 bytes from 142.250.192.110: seq=4 ttl=117 time=45.576 ms
+64 bytes from 142.250.192.110: seq=5 ttl=117 time=45.362 ms
+^C
+--- google.com ping statistics ---
+6 packets transmitted, 6 packets received, 0% packet loss
+round-trip min/avg/max = 36.163/44.728/48.522 ms
+
+
+
+

@@ -1,0 +1,52 @@
+										EXPANSION HEADER
+									*******************************
+
+Description:
+******************
+    • To test the Expansion Header we are toggling some external leds.
+prerequisite:
+************
+
+* Any Phytec Board with images
+* GPIO driver in kernel modules.
+* External LED.
+
+
+Test Case:
+*********
+	Boot the board and After booting check whether Expansion Header GPIOs are toggling or not.
+1) To export the gpio.
+	$ echo <x> > /sys/class/gpio/export
+
+2) To set the in/output of the gpio to the file direction.
+	$ echo <in/out> > /sys/class/gpio/gpio<x>/direction
+
+3) To set the gpio value to 1(off) , indicating the GPIO pin to be set to a active low level.
+	$ echo 1 > /sys/class/gpio/gpio<x>/value
+
+4) To set the gpio value to 0(on) , indicating the GPIO pin to be set to a active low level.
+	$ echo 0 > /sys/class/gpio/gpio<x>/value 
+
+
+ere x is the gpio_value, which is calculated as 
+VALUE = (gpio_BANK - 1)*32 + GPIO_Value
+
+Note : Gpio calculation will vary for board to board cosscheck with boards TRM.
+
+*****************************************************************************************************
+
+Description
+***********
+         Will try to export, direction out and toggle the GPIO1_10 which is connected to LED. 
+Pin35:(gpio1_10)
+
+root@ruggedboard-imx6ul:~# echo 10 > /sys/class/gpio/export
+root@ruggedboard-imx6ul:~# echo out > /sys/class/gpio/gpio10/direction
+root@ruggedboard-imx6ul:~# echo 0 > /sys/class/gpio/gpio10/value
+root@ruggedboard-imx6ul:~# echo 1 > /sys/class/gpio/gpio10/value
+root@ruggedboard-imx6ul:~# echo 0 > /sys/class/gpio/gpio10/value
+
+****************************************************************************************************
+
+
+

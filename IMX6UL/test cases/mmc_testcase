@@ -1,0 +1,39 @@
+										MMC
+									********************
+Description:
+********************									
+Insert an SD card or eMMC module into the MMC slot on the i.MX6UL board. Ensure that the MMC driver is loaded on the i.MX6UL board. You can check this by running the command lsmod | grep mmc in the terminal.
+
+Prerequisite:
+********************
+* Any Phytec Board with images
+* SD card should be detected.
+
+Test Case:
+************
+	Boot the board and after booting or while booting insert the SD card into Board MMC slot, Check the Log file whether node is created or not.
+Mount the SD-Card using the mount command.
+		$ mount /dev/mmcblkp1 /mnt/
+		$ cd /mnt
+		$ ls
+
+********************************************************************************************************
+Example:
+**********
+Description:
+***************
+    • To test the SD card Port functionality in Kernel with SD card.
+    • To test the SD card Port functionality in Kernel with SD card and read the data from SD card.
+    • To test the SD card Port functionality in Kernel with SD card and write the data to SD card.
+	Boot the board and After booting or while booting insert the SD card into Board MMC slot, Check the Log file whether node is created or not. Mount the SD-Card using the mount command.
+
+root@phyboard-segin-imx6ul-2:~# mount /dev/mmcblkp1 /mnt/
+root@phyboard-segin-imx6ul-2:~# 
+root@phyboard-segin-imx6ul-2:~# 
+root@phyboard-segin-imx6ul-2:~# mount /dev/mmcblk0p1 /mnt/
+[  326.627620] FAT-fs (mmcblk0p1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.
+root@phyboard-segin-imx6ul-2:~# cd /mnt/
+root@phyboard-segin-imx6ul-2:/mnt# ls
+oftree  zImage
+root@phyboard-segin-imx6ul-2:/mnt# 
+

@@ -1,0 +1,75 @@
+										DOUT
+									******************
+
+Description
+*********************
+    • To test the digital output pins on carrier board Identify the DOUT pins you want to test. The iMX6UL has several GPIO pins that can be configured as digital output pins. You'll need to identify which pins you want to test and their corresponding GPIO numbers.
+
+prerequisite:
+************
+
+* Any Phytec Board with images
+* GPIO driver in kernel modules.
+* Patch cords
+
+
+Test Case:
+*********
+    • Carrier board having 4 digital out pins on P6 connector. Please refer the schematic to p6 connector pins. 
+    • After booting connect the External LED positive to 5th pin of P6 connector and other end to Ground.
+    • Please give a below commands and observe the led status.
+
+1) To export the gpio.
+	$ echo <x> > /sys/class/gpio/export
+
+2) To set the in/output of the gpio to the file direction.
+	$ echo <in/out> > /sys/class/gpio/gpio<x>/direction
+
+3) To set the gpio value to 1(off) , indicating the GPIO pin to be set to a active low level.
+	$ echo 1 > /sys/class/gpio/gpio<x>/value
+
+4) To set the gpio value to 0(on) , indicating the GPIO pin to be set to a active low level.
+	$ echo 0 > /sys/class/gpio/gpio<x>/value 
+
+
+Here x is the gpio_value, which is calculated as 
+VALUE = (gpio_BANK - 1)*32 + GPIO_Value
+
+Note : Gpio calculation will vary for board to board cosscheck with boards TRM.
+
+*******************************************************************************************************************
+Example:
+*********
+Required Hardware
+    • Rugged-Board – i.MX6 UL
+    • External LED
+
+Pin2-GPIO1_IO15:
+**********************
+root@ruggedboard-imx6ul:~# echo 14 > /sys/class/gpio/export
+root@ruggedboard-imx6ul:~# echo out > /sys/class/gpio/gpio14/direction
+root@ruggedboard-imx6ul:~# echo 0 > /sys/class/gpio/gpio14/value
+root@ruggedboard-imx6ul:~# echo 1 > /sys/class/gpio/gpio14/value
+*********************************************************************************
+
+Pin3-GPIO1_IO14:
+root@ruggedboard-imx6ul:~# echo 15> /sys/class/gpio/export
+root@ruggedboard-imx6ul:~# echo out > /sys/class/gpio/gpio15/direction
+root@ruggedboard-imx6ul:~# echo 0 > /sys/class/gpio/gpio15/value
+root@ruggedboard-imx6ul:~# echo 1 > /sys/class/gpio/gpio15/value
+*********************************************************************************
+
+Pin4-GPIO1_IO12:
+root@ruggedboard-imx6ul:~# echo 12 > /sys/class/gpio/export
+root@ruggedboard-imx6ul:~# echo out > /sys/class/gpio/gpio12/direction
+root@ruggedboard-imx6ul:~# echo 0 > /sys/class/gpio/gpio12/value
+root@ruggedboard-imx6ul:~# echo 1 > /sys/class/gpio/gpio12/value
+*********************************************************************************
+
+Pin5-GPIO1_IO12:
+root@ruggedboard-imx6ul:~# echo 13> /sys/class/gpio/export
+root@ruggedboard-imx6ul:~# echo out > /sys/class/gpio/gpio13/direction
+root@ruggedboard-imx6ul:~# echo 1 > /sys/class/gpio/gpio13/value
+root@ruggedboard-imx6ul:~# echo 0 > /sys/class/gpio/gpio13/value
+*********************************************************************************
+

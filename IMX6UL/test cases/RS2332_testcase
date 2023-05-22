@@ -1,0 +1,39 @@
+										RS232
+									********************
+Description:
+***********************
+RS232 uses a serial transmission method where data is sent one bit at a time over a single communication line. It uses two wires, a transmit line (TX) and a receive line (RX), to establish a bidirectional communication between two devices.
+
+prerequisite:
+***************
+
+* Any Phytec Board with images
+* tty driver in kernel modules.
+
+Test Case:
+************
+1) Check weather the node is created in /dev
+		$ ls /dev/tty<Node>
+2) To establish a serial communication session with a device connected to the second UART interface (ttymxc1).
+		$ microcom -s 115200 /dev/tty<Node>
+
+************************************************************************************************************************
+Example:
+****************
+Description:
+**************
+    • To check UART2 node in /dev/.
+    • To test the UART2 Port funcationaly in Kernel by connecting Transmitter pin of first board to receiver pin of second board and connect Receiver pin of first board to transmitter pin of second board using patch cards.
+Required Hardware:
+    • RuggedBoard-i.MX6UL
+    • UART PORT
+    • PATCH CORDS
+
+RB-Device-1:
+root@phyboard-segin-imx6ul-2:~# microcom -s 115200 /dev/ttymxc1
+helllo phytec
+
+RB-Device-2:
+root@ruggedboard-imx6ul:~# microcom -s 115200 /dev/ttymxc1
+ruggedboard.............
+

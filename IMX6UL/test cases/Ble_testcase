@@ -1,0 +1,207 @@
+									BLUETOOTH TEST-CASES
+								******************************************
+Description:
+*******************
+Bluetooth is a wireless technology used for short-range communication between devices. It allows devices such as smartphones, laptops, headphones, speakers, and smartwatches to connect and exchange data without the need for cables.
+
+	Install the bluetooth driver and firmware if necessary. This can be done using a package manager or by manually downloading and installing the appropriate driver and firmware files.
+
+prerequisite:
+***************
+
+* Any Phytec Board with images
+* staging(wilc-sdio) driver in kernel modules.
+
+Test Case:
+************
+
+1) To load the "wilc-sdio" kernel module into the Linux kernel.
+		$ modprobe wilc-sdio
+2) To send a message to the wilc_bt device driver to power up the Bluetooth module.
+		$ echo BT_POWER_UP > /dev/wilc_bt
+3) To send a message to the wilc_bt device driver to initiate the download of firmware for the Bluetooth module.
+		$ echo BT_DOWNLOAD_FW > /dev/wilc_bt
+4) To send a message to the wilc_bt device driver to wake up the Bluetooth module.
+		$ echo BT_FW_CHIP_WAKEUP > /dev/wilc_bt
+5) To send a message to the wilc_bt device driver to allow the Bluetooth module to enter sleep mode.
+		$ echo BT_FW_CHIP_ALLOW_SLEEP > /dev/wilc_bt
+6) To attach a Bluetooth Host Controller Interface (HCI) to a serial port on the i.MX6UL board.
+		$ hciattach /dev/ttymxc4 any 115200 noflow 
+7) To  display the current configuration and status of all the Bluetooth HCI devices present in the system.
+		$ hciconfig -a
+8) To  bring up the Bluetooth HCI device with the ID "hci0".
+		$ hciconfig hci0 up
+9) To perform a Bluetooth Low Energy (BLE) scan for nearby advertising devices.
+		$ hcitool lescan
+******************************************************************************************************************************************
+
+Example:
+***********
+
+root@ruggedboard-imx6ul:~# 
+root@ruggedboard-imx6ul:~# modprobe wilc-sdio
+root@ruggedboard-imx6ul:~# 
+root@ruggedboard-imx6ul:~# 
+root@ruggedboard-imx6ul:~# echo BT_POWER_UP > /dev/wilc_bt
+[  273.921736] at_pwr_dev: open()
+[  273.925095] AT PWR: bt_power_up
+[  273.928287] Device already up. request source is BT
+[  273.938777] at_pwr_dev: close()
+root@ruggedboard-imx6ul:~# 
+root@ruggedboard-imx6ul:~# 
+root@ruggedboard-imx6ul:~# echo BT_DOWNLOAD_FW > /dev/wilc_bt
+[  282.671707] at_pwr_dev: open()
+[  282.675001] AT PWR: bt_download_fw
+[  282.678450] Bluetooth firmware: mchp/wilc3000_ble_firmware.bin
+[  282.705356] Downloading BT firmware size = 58852 ...
+[  282.765711] Starting BT firmware
+[  282.881035] BT Start Succeeded
+[  282.884357] at_pwr_dev: close()
+root@ruggedboard-imx6ul:~# 
+root@ruggedboard-imx6ul:~# 
+root@ruggedboard-imx6ul:~# echo BT_FW_CHIP_WAKEUP > /dev/wilc_bt
+[  290.921691] at_pwr_dev: open()
+[  290.925421] at_pwr_dev: close()
+root@ruggedboard-imx6ul:~# 
+root@ruggedboard-imx6ul:~# 
+root@ruggedboard-imx6ul:~# [  295.853576] Another device is preventing allow sleep operation. request source is Wifi
+[  295.862227] Another device is preventing allow sleep operation. request source is Wifi
+[  295.871433] Another device is preventing allow sleep operation. request source is Wifi
+echo BT_FW_CHIP_ALLOW_SLEEP > /dev/wilc_bt
+[  297.731704] at_pwr_dev: open()
+[  297.735366] at_pwr_dev: close()
+root@ruggedboard-imx6ul:~# 
+root@ruggedboard-imx6ul:~# 
+root@ruggedboard-imx6ul:~# 
+root@ruggedboard-imx6ul:~# 
+root@ruggedboard-imx6ul:~# 
+root@ruggedboard-imx6ul:~# hciattach ttymxc4 any 115200 noflow
+Device setup complete
+root@ruggedboard-imx6ul:~# 
+root@ruggedboard-imx6ul:~# 
+root@ruggedboard-imx6ul:~# hciconfig -a
+hci0:   Type: Primary  Bus: UART
+        BD Address: F8:F0:05:51:78:D3  ACL MTU: 27:30  SCO MTU: 0:0
+        DOWN 
+        RX bytes:191 acl:0 sco:0 events:12 errors:0
+        TX bytes:64 acl:0 sco:0 commands:12 errors:0
+        Features: 0x00 0x00 0x00 0x00 0x60 0x00 0x00 0x00
+        Packet type: DM1 DH1 HV1 
+        Link policy: 
+        Link mode: SLAVE ACCEPT 
+
+root@ruggedboard-imx6ul:~# 
+root@ruggedboard-imx6ul:~# 
+root@ruggedboard-imx6ul:~# hciconfig hci0 up
+root@ruggedboard-imx6ul:~# 
+root@ruggedboard-imx6ul:~# hciconfig -a
+hci0:   Type: Primary  Bus: UART
+        BD Address: F8:F0:05:51:78:D3  ACL MTU: 27:30  SCO MTU: 0:0
+        UP RUNNING 
+        RX bytes:396 acl:0 sco:0 events:26 errors:0
+        TX bytes:200 acl:0 sco:0 commands:26 errors:0
+        Features: 0x00 0x00 0x00 0x00 0x60 0x00 0x00 0x00
+        Packet type: DM1 DH1 HV1 
+        Link policy: 
+        Link mode: SLAVE ACCEPT 
+Can't read local name on hci0: Input/output error (5)
+root@ruggedboard-imx6ul:~# 
+root@ruggedboard-imx6ul:~# 
+root@ruggedboard-imx6ul:~# 
+root@ruggedboard-imx6ul:~# hcitool lescan
+LE Scan ...
+D4:EA:5F:C0:12:75 RPSS369
+FA:CC:56:E1:7B:5D RPSS369
+14:82:1B:2A:9A:ED (unknown)
+11:34:44:4F:12:B9 (unknown)
+EB:9A:22:E4:DE:6E RPSS369
+F2:71:E2:6F:19:E3 RPSS369
+F2:71:E2:6F:19:E3 (unknown)
+CD:2C:97:CE:4F:5B RPSS369
+C4:D2:D4:B4:32:24 RPSS369
+C0:7A:C4:12:43:E8 RPSS369
+C0:7A:C4:12:43:E8 (unknown)
+CA:FA:19:61:4E:52 RPSS369
+D6:2A:1D:20:3C:75 (unknown)
+33:70:B4:97:EF:46 (unknown)
+E8:8A:81:28:D7:DB RPSS369
+D8:A9:DE:C9:41:26 RPSS369
+E4:15:CE:FC:CE:49 RPSS369
+AC:98:B1:15:26:6F Wave Call
+AC:98:B1:15:26:6F (unknown)
+33:70:B4:97:EF:46 (unknown)
+C3:8D:9E:D1:E5:E6 RPSS369
+D0:6D:24:21:93:9A RPSS369
+33:70:B4:97:EF:46 (unknown)
+D6:2A:1D:20:3C:75 (unknown)
+D6:2A:1D:20:3C:75 ColorFit Pulse 2 Max_3C75
+CD:6D:60:36:8E:05 RPSS369
+E2:59:70:B1:60:F3 RPSS369
+E2:59:70:B1:60:F3 (unknown)
+33:70:B4:97:EF:46 (unknown)
+D0:28:41:3E:66:94 RPSS369
+AC:98:B1:15:26:6F Wave Call
+AC:98:B1:15:26:6F (unknown)
+FB:10:03:6B:BE:82 Celium_FWVer_10
+FB:10:03:6B:BE:82 (unknown)
+C4:D2:D4:B4:32:24 (unknown)
+6B:FC:DA:ED:30:67 (unknown)
+6B:FC:DA:ED:30:67 (unknown)
+58:7A:D8:26:09:09 (unknown)
+C3:8D:9E:D1:E5:E6 RPSS369
+E8:8A:81:28:D7:DB RPSS369
+E8:8A:81:28:D7:DB (unknown)
+DD:9F:D5:9D:52:35 RPSS369
+DD:9F:D5:9D:52:35 (unknown)
+D8:A9:DE:C9:41:26 RPSS369
+D8:A9:DE:C9:41:26 (unknown)
+D4:EA:5F:C0:12:75 (unknown)
+D6:2A:1D:20:3C:75 (unknown)
+D6:2A:1D:20:3C:75 ColorFit Pulse 2 Max_3C75
+33:70:B4:97:EF:46 (unknown)
+CD:6D:60:36:8E:05 RPSS369
+FE:64:68:EB:32:8C RPSS369
+E2:59:70:B1:60:F3 RPSS369
+E2:59:70:B1:60:F3 (unknown)
+D8:A9:DE:C9:41:26 RPSS369
+D8:A9:DE:C9:41:26 (unknown)
+AC:98:B1:15:26:6F Wave Call
+AC:98:B1:15:26:6F (unknown)
+33:70:B4:97:EF:46 (unknown)
+DE:D4:70:2D:5F:A6 RPSS369
+6B:FC:DA:ED:30:67 (unknown)
+6B:FC:DA:ED:30:67 (unknown)
+D6:2A:1D:20:3C:75 (unknown)
+D6:2A:1D:20:3C:75 ColorFit Pulse 2 Max_3C75
+C3:8D:9E:D1:E5:E6 RPSS369
+C3:8D:9E:D1:E5:E6 (unknown)
+EE:CB:0D:B5:B8:03 RPSS369
+EE:CB:0D:B5:B8:03 (unknown)
+E8:8A:81:28:D7:DB RPSS369
+E8:8A:81:28:D7:DB (unknown)
+D0:6D:24:21:93:9A RPSS369
+FA:CC:56:E1:7B:5D (unknown)
+D6:2A:1D:20:3C:75 (unknown)
+D6:2A:1D:20:3C:75 ColorFit Pulse 2 Max_3C75
+FE:64:68:EB:32:8C RPSS369
+D8:A9:DE:C9:41:26 RPSS369
+D8:A9:DE:C9:41:26 (unknown)
+74:53:16:6C:01:13 (unknown)
+D0:28:41:3E:66:94 RPSS369
+AC:98:B1:15:26:6F Wave Call
+AC:98:B1:15:26:6F (unknown)
+CD:2C:97:CE:4F:5B (unknown)
+FB:10:03:6B:BE:82 Celium_FWVer_10
+FB:10:03:6B:BE:82 (unknown)
+DE:D4:70:2D:5F:A6 RPSS369
+DE:D4:70:2D:5F:A6 (unknown)
+D6:2A:1D:20:3C:75 (unknown)
+C3:8D:9E:D1:E5:E6 RPSS369
+E8:8A:81:28:D7:DB RPSS369
+E4:15:CE:FC:CE:49 RPSS369
+33:70:B4:97:EF:46 (unknown)
+E0:59:6E:AD:77:CC RPSS369
+E0:59:6E:AD:77:CC (unknown)
+AC:98:B1:15:26:6F Wave Call
+^Croot@ruggedboard-imx6ul:~# [  378.541501] random: crng init done
+[  378.544987] random: 7 urandom warning(s) missed due to ratelimiting

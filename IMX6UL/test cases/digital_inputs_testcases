@@ -1,0 +1,88 @@
+										DIN
+									************************
+
+Description:
+***********************
+    • To test the digital input pin on the carrier board. Connect a digital input device, such as a switch or button, to the GPIO pin that you want to test.
+
+prerequisite:
+*******************
+
+    • Any Phytec Board with images
+    • Patch cords
+
+Test cases:
+*******************
+
+    • Check Carrier board having 4 digital input pins on P5 connector. Fifth pin of P5 connector is ground.
+    • After completion of board booting, connect the one end of patch card to first pin of P5 connector and other end to input voltage pin.
+    • Give the below commands to test the digital inputs.
+
+1) To export the gpio.
+	$ echo <x> > /sys/class/gpio/export
+
+2) To set the in/output of the gpio to the file direction.
+	$ echo <in/out> > /sys/class/gpio/gpio<x>/direction
+
+3) To set the gpio value to 1(off) , indicating the GPIO pin to be set to a active low level.
+	$ echo 1 > /sys/class/gpio/gpio<x>/value
+
+4) To set the gpio value to 0(on) , indicating the GPIO pin to be set to a active low level.
+	$ echo 0 > /sys/class/gpio/gpio<x>/value 
+
+Here x is the gpio_value, which is calculated as 
+VALUE = (gpio_BANK - 1)*32 + GPIO_Value
+
+Note : Gpio calculation will vary for board to board cosscheck with boards TRM.
+
+*****************************************************************************************************
+Example:
+*******
+Description
+*************
+    • Give the below commands to test the digital inputs.
+		$ echo 133 > sys/class/gpio/export
+		$ echo in > /sys/class/gpio/gpio133/direction
+		$ cat /sys/class/gpio/gpio133/value
+		
+    • Remove the patch card and give the below command
+		$ cat /sys/class/gpio/gpio133/value
+
+    • The value of digital pin is changed one to zero.
+
+    • Meanwhile we can check the rest of the digital pins on P5 connector.Please have a look on below expected output for all digital input pins on P5 connector.
+Expected Output:
+********************************************************************************
+Pin1-GPIO5-5:
+root@ruggedboard-imx6ul:~# echo 133 > /sys/class/gpio/export
+root@ruggedboard-imx6ul:~# echo in > /sys/class/gpio/gpio133/direction
+root@ruggedboard-imx6ul:~# cat /sys/class/gpio/gpio133/value
+1
+root@ruggedboard-imx6ul:~# cat /sys/class/gpio/gpio133/value
+0
+********************************************************************************
+Pin2-GPIO2-13:
+root@ruggedboard-imx6ul:~# echo 45 > /sys/class/gpio/export
+root@ruggedboard-imx6ul:~# echo in > /sys/class/gpio/gpio45/direction
+root@ruggedboard-imx6ul:~# cat /sys/class/gpio/gpio45/value
+1
+root@ruggedboard-imx6ul:~# cat /sys/class/gpio/gpio45/value
+0
+********************************************************************************
+Pin4-GPIO1-11:
+root@ruggedboard-imx6ul:~# echo 11 > /sys/class/gpio/export
+root@ruggedboard-imx6ul:~# echo in > /sys/class/gpio/gpio11/direction
+root@ruggedboard-imx6ul:~# cat /sys/class/gpio/gpio11/value
+1
+root@ruggedboard-imx6ul:~# cat /sys/class/gpio/gpio11/value
+0
+********************************************************************************
+Pin3-SA12_MCLK:
+root@ruggedboard-imx6ul:~# echo 1 > /sys/class/gpio/export
+root@ruggedboard-imx6ul:~# echo in > /sys/class/gpio/gpio1/direction
+root@ruggedboard-imx6ul:~# cat /sys/class/gpio/gpio1/value
+1
+root@ruggedboard-imx6ul:~# cat /sys/class/gpio/gpio1/value
+0
+********************************************************************************
+

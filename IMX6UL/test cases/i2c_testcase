@@ -1,0 +1,44 @@
+										I2C
+									*******************
+
+Description
+***********
+
+Connect the I2C device to the i.MX6UL board. Ensure that the I2C driver is loaded on the i.MX6UL board. You can check this by running the command lsmod | grep i2c in the terminal. Install the i2c-tools package .
+
+prerequisite:
+************
+* Any Phytec Board with images
+* I2c driver in kernel module
+* i2c-tools package
+
+Test Case:
+************
+To scan the i2c bus in device we use the command as
+	i2cdetect -y -r <bus_number>
+To read data from eeprom
+	echo <message> > /sys/class/i2c-dev/i2c-0/device/0-0052/eeprom
+
+*****************************************************************************************************
+Example
+*************
+   To test the read and write functionality of i2c based eeprom.
+Required Hardware:
+    • phyCORE-i.MX 6UL System
+
+Expected Output:
+root@ruggedboard-imx6ul:~# i2cdetect -y -r 0
+0 1 2 3 4 5 6 7 8 9 a b c d e f
+00: -- -- -- -- -- -- -- -- -- -- -- -- --
+10: -- -- -- -- -- -- -- -- 18 -- -- -- -- -- -- --
+20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+50: -- -- UU -- -- -- -- -- -- -- 5a -- -- -- -- --
+60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+70: -- -- -- -- -- -- 76 --
+root@ruggedboard-imx6ul:~# echo hello > /sys/class/i2c-dev/i2c-0/device/0-0052/eeprom
+root@ruggedboard-imx6ul:~# cat /sys/class/i2c-dev/i2c-0/device/0-0052/eeprom
+hello ...
+phytec.... welcome to ruggedboard community...... 
+

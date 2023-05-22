@@ -1,0 +1,44 @@
+									USER SWITCH testcase
+								*************************************
+Description:
+*****************
+	The i.MX6UL board typically comes with one or more user switches, which are simple mechanical switches that can be used to trigger an action in the system. These switches are typically connected to the GPIO (General Purpose Input/Output) pins of the i.MX6UL processor, and can be read and controlled through the sysfs interface in Linux.
+
+prerequisite:
+***************
+
+* Any Phytec Board with images
+* GPIO driver in kernel modules.
+
+Test Case:
+************
+1) To export the gpio.
+	$ echo <x> > /sys/class/gpio/export
+
+2) To check the in/output of the gpio to the file direction.
+	$ cat > /sys/class/gpio/gpio<x>/direction
+
+
+Here x is the gpio_value, which is calculated as 
+VALUE = (gpio_BANK - 1)*32 + GPIO_Value
+
+Note : Gpio calculation will vary for board to board cosscheck with boards TRM.
+
+*****************************************************************************************************
+Example:
+***********
+Description:
+******************
+    • To test the USER Switch functionality in Kernel with application.
+Required Hardware
+    • -NA-
+
+root@ruggedboard-imx6ul:~# echo 40 > /sys/class/gpio/export                                                                                                             
+root@ruggedboard-imx6ul:~# cat /sys/class/gpio/gpio40/direction
+in
+root@ruggedboard-imx6ul:~# cat /sys/class/gpio/gpio40/value     // user switch released                                                                                            
+1
+root@ruggedboard-imx6ul:~# cat /sys/class/gpio/gpio40/value   // user switch pressed
+0
+root@ruggedboard-imx6ul:~#
+

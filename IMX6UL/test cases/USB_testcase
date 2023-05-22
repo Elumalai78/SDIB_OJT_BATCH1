@@ -1,0 +1,53 @@
+										USB testcase
+									***************************
+Description:
+********************
+USB (Universal Serial Bus) is a standard communication protocol that allows for the connection of various devices, such as keyboards, mice, printers, cameras, and storage devices, to a computer or other host device. USB has become a ubiquitous standard for connecting devices to computers and other electronics due to its simplicity, versatility, and high data transfer speeds.
+
+prerequisite:
+***************
+
+* Any Phytec Board with images
+* USB driver in kernel modules.
+* USB device
+
+Test Case:
+************
+1) To check wheather the USB node .
+		$ dmesg | tail
+2) Mount the USB using command.
+		$ mount /dev/sda1 /mnt/
+		$ cd /mnt
+
+*****************************************************************************************************
+Example:
+*****************
+Description:
+*******************
+    • To test the USB1 Port functionality using the dmesg in Kernel with Pen-drive.
+    • To test the USB1 Port functionality in Kernel with Pen-drive to read and write the data.
+    • To test the USB1 Port functionality in Kernel with USB host performance test.
+Hardware: RuggedBoard-i.MX6UL
+
+__________________________________________________________________________________________________
+root@ruggedboard-imx6ul:~# 
+root@ruggedboard-imx6ul:~# dmesg | tail
+[ 2322.067576] usb-storage 1-1:1.0: USB Mass Storage device detected
+[ 2322.138689] scsi host0: usb-storage 1-1:1.0
+[ 2323.231608] scsi 0:0:0:0: Direct-Access     MBIL SSM Moser Baer Disk  PMAP PQ: 0 ANSI: 6
+[ 2325.589356] sd 0:0:0:0: [sda] 15179776 512-byte logical blocks: (7.77 GB/7.24 GiB)
+[ 2325.613479] sd 0:0:0:0: [sda] Write Protect is off
+[ 2325.618846] sd 0:0:0:0: [sda] Mode Sense: 23 00 00 00
+[ 2325.631551] sd 0:0:0:0: [sda] No Caching mode page found
+[ 2325.637526] sd 0:0:0:0: [sda] Assuming drive cache: write through
+[ 2325.706413]  sda: sda1
+[ 2325.787896] sd 0:0:0:0: [sda] Attached SCSI removable disk
+Test Case 2 (Mount the Pen-drive and read and write the data)
+
+root@ruggedboard-imx6ul:~# mount /dev/mmcblk0p1 /mnt/
+[ 1062.380416] FAT-fs (mmcblk0p1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.
+root@ruggedboard-imx6ul:~# cd /mnt/
+root@ruggedboard-imx6ul:mnt# ls
+oftree* zImage*
+root@ruggedboard-imx6ul:mnt# 
+root@ruggedboard-imx6ul:mnt# 

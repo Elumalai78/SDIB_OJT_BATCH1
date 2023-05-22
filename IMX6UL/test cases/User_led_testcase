@@ -1,0 +1,64 @@
+									USER LED’S testcase
+								**********************************
+Description:
+**************
+User LED (Light Emitting Diode) is a small LED typically found on embedded systems such as single-board computers and microcontrollers, which can be controlled by the user programatically. To test the USER LED's functionality in Kernel whether they are toggling. 
+
+prerequisite:
+***************
+
+* Any Phytec Board with images
+* GPIO driver in kernel modules.
+
+Test Case:
+************
+1) To export the gpio.
+	$ echo <x> > /sys/class/gpio/export
+
+2) To set the in/output of the gpio to the file direction.
+	$ echo <in/out> > /sys/class/gpio/gpio<x>/direction
+
+3) To set the gpio value to 1(off) , indicating the GPIO pin to be set to a active low level.
+	$ echo 1 > /sys/class/gpio/gpio<x>/value
+
+4) To set the gpio value to 0(on) , indicating the GPIO pin to be set to a active low level.
+	$ echo 0 > /sys/class/gpio/gpio<x>/value 
+
+
+Here x is the gpio_value, which is calculated as 
+VALUE = (gpio_BANK - 1)*32 + GPIO_Value
+
+Note : Gpio calculation will vary for board to board cosscheck with boards TRM.
+
+*****************************************************************************************************
+Example:
+***********
+Description
+***********
+         Will try to export, direction out and toggle the gpio2_11 which is connected to LED 
+
+Hardware: RuggedBoard-i.MX6UL
+
+1) calcuation :
+VALUE = (2 - 1)*32 + 11
+      = 32 + 11  
+      = 43
+2) Boot the board and export & give direction to gpio      
+    root@ruggedboard-imx6ul:~# echo 43 > /sys/class/gpio/export
+    root@ruggedboard-imx6ul:~# echo out > /sys/class/gpio/gpio43/direction
+
+3) Toggle gpio with below commands and observe the led status
+    root@ruggedboard-imx6ul:~# echo 1 > /sys/class/gpio/gpio43/value 
+    root@ruggedboard-imx6ul:~# echo 0 > /sys/class/gpio/gpio43/value 
+    root@ruggedboard-imx6ul:~# echo 1 > /sys/class/gpio/gpio43/value 
+
+
+GPIO2_IO12:
+
+root@ruggedboard-imx6ul:~# echo 44 > /sys/class/gpio/export   
+root@ruggedboard-imx6ul:~# echo out > /sys/class/gpio/gpio44/direction 
+root@ruggedboard-imx6ul:~# echo 0 > /sys/class/gpio/gpio44/value
+root@ruggedboard-imx6ul:~# echo 1 > /sys/class/gpio/gpio44/value
+root@ruggedboard-imx6ul:~# echo 0 > /sys/class/gpio/gpio44/value
+root@ruggedboard-imx6ul:~# echo 1 > /sys/class/gpio/gpio44/value
+

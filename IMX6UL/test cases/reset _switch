@@ -1,0 +1,1051 @@
+										RESET SWITCH
+									****************************
+Description:
+********************
+    • To reset the board.
+
+prerequisite:
+***************
+* Any Phytec Board with images
+
+Testcase
+*****************************
+Press the reset switch to reboot the board.
+
+**********************************************************************************************************************
+LOG:
+*****************
+
+barebox 2019.01.0-bsp-yocto-i.mx6ul-pd19.1.0 #1 Wed Jun 8 09:47:52 UTC 2022
+
+
+Board: Phytec phyCORE-i.MX6 Ultra Lite SOM with NAND
+detected i.MX6 UltraLite revision 1.2
+i.MX reset reason POR (SRSR: 0x00000001)
+i.MX6 UltraLite unique ID: d1e090b62b46b9d4
+mdio_bus: miibus0: probed
+eth0: got preset MAC address: 50:2d:f4:24:75:67
+nand: ONFI flash detected
+nand: NAND device: Manufacturer ID: 0x2c, Chip ID: 0xdc (Micron MT29F4G08ABADAH4), 512MiB, page size: 2048, OOB size: 64
+Bad block table found at page 262080, version 0x01
+Bad block table found at page 262016, version 0x01
+imx-usb 2184200.usb@2184200.of: USB EHCI 1.00
+imx-esdhc 2190000.usdhc@2190000.of: registered as mmc0
+state: New state registered 'state'
+state: Using bucket 0@0x00000000
+netconsole: registered as netconsole-1
+phySOM-i.MX6: Using environment in NAND flash
+malloc space: 0x8fe7cee0 -> 0x9fcf9dbf (size 254.5 MiB)
+running /env/bin/init...
+
+Hit m for menu or any key to stop autoboot:    3
+
+type exit to get to the menu
+barebox@Phytec phyCORE-i.MX6 Ultra Lite SOM with NAND:/ boot mmc
+booting 'mmc'
+mmc0: detected SD card version 2.0
+mmc0: registered mmc0
+
+Loading ARM Linux zImage '/mnt/mmc/zImage'
+Loading devicetree from '/mnt/mmc/oftree'
+Failed to fixup node in of_fixup_status+0x1/0x28: No such device
+Failed to fixup node in of_fixup_status+0x1/0x28: No such device
+commandline: consoleblank=0 console=ttymxc0,115200n8  root=/dev/mmcblk0p2 rootflags=data=journal rootwait ro fsck.repair=yes
+Starting kernel in secure mode
+[    0.000000] Booting Linux on physical CPU 0x0
+[    0.000000] Linux version 5.10.76-bsp-yocto-ampliphy-i.mx6ul-pd21.2.1 (oe-user@oe-host) (arm-phytec-linux-gnueabi-gcc (GCC) 10.3.0, GNU ld (GNU Binutils) 2.36.1.2022
+[    0.000000] CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr=10c5387d
+[    0.000000] CPU: div instructions available: patching division code
+[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+[    0.000000] OF: fdt: Machine model: Rugged Board i.MX6 UltraLite
+[    0.000000] Memory policy: Data cache writealloc
+[    0.000000] cma: Reserved 64 MiB at 0x9a000000
+[    0.000000] Zone ranges:
+[    0.000000]   Normal   [mem 0x0000000080000000-0x000000009fffffff]
+[    0.000000]   HighMem  empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000080000000-0x000000009fffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000080000000-0x000000009fffffff]
+[    0.000000] percpu: Embedded 20 pages/cpu s51948 r8192 d21780 u81920
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 130048
+[    0.000000] Kernel command line: consoleblank=0 console=ttymxc0,115200n8  root=/dev/mmcblk0p2 rootflags=data=journal rootwait ro fsck.repair=yes
+[    0.000000] Dentry cache hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 32768 (order: 5, 131072 bytes, linear)
+[    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
+[    0.000000] Memory: 422600K/524288K available (14336K kernel code, 2037K rwdata, 4984K rodata, 1024K init, 6664K bss, 36152K reserved, 65536K cma-reserved, 0K highm)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] Running RCU self tests
+[    0.000000] rcu: Hierarchical RCU implementation.
+[    0.000000] rcu:     RCU event tracing is enabled.
+[    0.000000] rcu:     RCU lockdep checking is enabled.
+[    0.000000] rcu:     RCU restricting CPUs from NR_CPUS=4 to nr_cpu_ids=1.
+[    0.000000]  Tracing variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 10 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=1
+[    0.000000] NR_IRQS: 16, nr_irqs: 16, preallocated irqs: 16
+[    0.000000] random: get_random_bytes called from start_kernel+0x334/0x554 with crng_init=0
+[    0.000000] Switching to timer-based delay loop, resolution 41ns
+[    0.000026] sched_clock: 32 bits at 24MHz, resolution 41ns, wraps every 89478484971ns
+[    0.000109] clocksource: mxc_timer1: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 79635851949 ns
+[    0.004448] Console: colour dummy device 80x30
+[    0.004597] Lock dependency validator: Copyright (c) 2006 Red Hat, Inc., Ingo Molnar
+[    0.004665] ... MAX_LOCKDEP_SUBCLASSES:  8
+[    0.004726] ... MAX_LOCK_DEPTH:          48
+[    0.004785] ... MAX_LOCKDEP_KEYS:        8192
+[    0.004838] ... CLASSHASH_SIZE:          4096
+[    0.004893] ... MAX_LOCKDEP_ENTRIES:     32768
+[    0.004947] ... MAX_LOCKDEP_CHAINS:      65536
+[    0.005002] ... CHAINHASH_SIZE:          32768
+[    0.005059]  memory used by lock dependency info: 4061 kB
+[    0.005113]  memory used for stack traces: 2112 kB
+[    0.005169]  per task-struct memory footprint: 1536 bytes
+[    0.005465] Calibrating delay loop (skipped), value calculated using timer frequency.. 48.00 BogoMIPS (lpj=240000)
+[    0.005592] pid_max: default: 32768 minimum: 301
+[    0.006655] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+[    0.006754] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+[    0.016830] CPU: Testing write buffer coherency: ok
+[    0.019529] CPU0: update cpu_capacity 1024
+[    0.019648] CPU0: thread -1, cpu 0, socket 0, mpidr 80000000
+[    0.028929] Setting up static identity map for 0x80100000 - 0x80100078
+[    0.031109] rcu: Hierarchical SRCU implementation.
+[    0.036589] smp: Bringing up secondary CPUs ...
+[    0.036709] smp: Brought up 1 node, 1 CPU
+[    0.036798] SMP: Total of 1 processors activated (48.00 BogoMIPS).
+[    0.036875] CPU: All CPU(s) started in SVC mode.
+[    0.043958] devtmpfs: initialized
+[    0.153230] VFP support v0.3: implementor 41 architecture 2 part 30 variant 7 rev 5
+[    0.156670] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+[    0.156900] futex hash table entries: 256 (order: 2, 16384 bytes, linear)
+[    0.163358] pinctrl core: initialized pinctrl subsystem
+[    0.180701] NET: Registered protocol family 16
+[    0.268892] DMA: preallocated 256 KiB pool for atomic coherent allocations
+[    0.286500] thermal_sys: Registered thermal governor 'step_wise'
+[    0.287182] cpuidle: using governor menu
+[    0.287665] CPU identified as i.MX6UL, silicon rev 1.2
+[    1.232560] vdd3p0: supplied by regulator-dummy
+[    1.290773] cpu: supplied by regulator-dummy
+[    1.347789] vddsoc: supplied by regulator-dummy
+[    2.604911] random: fast init done
+[    3.113609] No ATAGs?
+[    3.114635] hw-breakpoint: found 5 (+1 reserved) breakpoint and 4 watchpoint registers.
+[    3.114902] hw-breakpoint: maximum watchpoint size is 8 bytes.
+[    3.129690] debugfs: Directory 'dummy-iomuxc-gpr@20e4000' with parent 'regmap' already present!
+[    3.134836] imx6ul-pinctrl 20e0000.pinctrl: initialized IMX pinctrl driver
+[    3.463397] mxs-dma 1804000.dma-apbh: initialized
+[    3.497665] vgaarb: loaded
+[    3.504477] SCSI subsystem initialized
+[    3.509864] usbcore: registered new interface driver usbfs
+[    3.511218] usbcore: registered new interface driver hub
+[    3.511762] usbcore: registered new device driver usb
+[    3.526160] i2c i2c-0: IMX I2C adapter registered
+[    3.537208] i2c i2c-1: IMX I2C adapter registered
+[    3.540284] mc: Linux media interface: v0.10
+[    3.540819] videodev: Linux video capture interface: v2.00
+[    3.543385] pps_core: LinuxPPS API ver. 1 registered
+[    3.543499] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    3.543733] PTP clock support registered
+[    3.549157] Advanced Linux Sound Architecture Driver Initialized.
+[    3.559996] Bluetooth: Core ver 2.22
+[    3.560479] NET: Registered protocol family 31
+[    3.560574] Bluetooth: HCI device and connection manager initialized
+[    3.560966] Bluetooth: HCI socket layer initialized
+[    3.561124] Bluetooth: L2CAP socket layer initialized
+[    3.561660] Bluetooth: SCO socket layer initialized
+[    3.569774] clocksource: Switched to clocksource mxc_timer1
+[    7.035462] VFS: Disk quotas dquot_6.6.0
+[    7.036022] VFS: Dquot-cache hash table entries: 1024 (order 0, 4096 bytes)
+[    7.147692] NET: Registered protocol family 2
+[    7.148933] IP idents hash table entries: 8192 (order: 4, 65536 bytes, linear)
+[    7.156627] tcp_listen_portaddr_hash hash table entries: 256 (order: 1, 11264 bytes, linear)
+[    7.156913] TCP established hash table entries: 4096 (order: 2, 16384 bytes, linear)
+[    7.157203] TCP bind hash table entries: 4096 (order: 5, 163840 bytes, linear)
+[    7.158867] TCP: Hash tables configured (established 4096 bind 4096)
+[    7.161842] UDP hash table entries: 256 (order: 2, 24576 bytes, linear)
+[    7.162260] UDP-Lite hash table entries: 256 (order: 2, 24576 bytes, linear)
+[    7.163936] NET: Registered protocol family 1
+[    7.171875] RPC: Registered named UNIX socket transport module.
+[    7.172195] RPC: Registered udp transport module.
+[    7.172292] RPC: Registered tcp transport module.
+[    7.172375] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    7.177560] PCI: CLS 0 bytes, default 64
+[    7.187872] hw perfevents: enabled with armv7_cortex_a7 PMU driver, 5 counters available
+[    7.206824] Initialise system trusted keyrings
+[    7.209284] workingset: timestamp_bits=30 max_order=17 bucket_order=0
+[    7.294586] NFS: Registering the id_resolver key type
+[    7.295114] Key type id_resolver registered
+[    7.295420] Key type id_legacy registered
+[    7.296640] nfs4filelayout_init: NFSv4 File Layout Driver Registering...
+[    7.296987] nfs4flexfilelayout_init: NFSv4 Flexfile Layout Driver Registering...
+[    7.297564] jffs2: version 2.2. (NAND) �© 2001-2006 Red Hat, Inc.
+[    7.304213] fuse: init (API version 7.32)
+[    7.548478] NET: Registered protocol family 38
+[    7.549025] Key type asymmetric registered
+[    7.549395] Asymmetric key parser 'x509' registered
+[    7.550325] io scheduler mq-deadline registered
+[    7.550438] io scheduler kyber registered
+[    7.625064] imx-sdma 20ec000.sdma: Direct firmware load for imx/sdma/sdma-imx6q.bin failed with error -2
+[    7.625402] imx-sdma 20ec000.sdma: Falling back to sysfs fallback for: imx/sdma/sdma-imx6q.bin
+[    7.651345] 2020000.serial: ttymxc0 at MMIO 0x2020000 (irq = 31, base_baud = 5000000) is a IMX
+[    8.460468] printk: console [ttymxc0] enabled
+[    8.481540] 21e8000.serial: ttymxc1 at MMIO 0x21e8000 (irq = 67, base_baud = 5000000) is a IMX
+[    8.500447] 21ec000.serial: ttymxc2 at MMIO 0x21ec000 (irq = 68, base_baud = 5000000) is a IMX
+[    8.518780] 21f4000.serial: ttymxc4 at MMIO 0x21f4000 (irq = 69, base_baud = 5000000) is a IMX
+[    8.537888] 21fc000.serial: ttymxc5 at MMIO 0x21fc000 (irq = 70, base_baud = 5000000) is a IMX
+[    8.732077] brd: module loaded
+[    8.849252] loop: module loaded
+[    8.854002] at24 0-0052: supply vcc not found, using dummy regulator
+[    8.870853] at24 0-0052: 4096 byte 24c32 EEPROM, writable, 32 bytes/write
+[    8.905321] nand: device found, Manufacturer ID: 0x2c, Chip ID: 0xdc
+[    8.912040] nand: Micron MT29F4G08ABADAH4
+[    8.916163] nand: 512 MiB, SLC, erase size: 128 KiB, page size: 2048, OOB size: 64
+[    8.929295] Bad block table found at page 262080, version 0x01
+[    8.936113] Bad block table found at page 262016, version 0x01
+[    8.943456] 3 fixed-partitions partitions found on MTD device gpmi-nand
+[    8.950393] Creating 3 MTD partitions on "gpmi-nand":
+[    8.955617] 0x000000000000-0x000000400000 : "barebox"
+[    8.989646] 0x000000400000-0x000000500000 : "barebox-environment"
+[    9.015873] 0x000000500000-0x000020000000 : "root"
+[    9.087703] gpmi-nand 1806000.nand-controller: driver registered.
+[    9.163079] libphy: Fixed MDIO Bus: probed
+[    9.173473] CAN device driver interface
+[    9.206741] pps pps0: new PPS source ptp0
+[    9.225387] libphy: fec_enet_mii_bus: probed
+[    9.255259] fec 2188000.ethernet eth0: registered PHC device 0
+[    9.270981] PPP generic driver version 2.4.2
+[    9.277720] PPP BSD Compression module registered
+[    9.282968] PPP Deflate Compression module registered
+[    9.288405] PPP MPPE Compression module registered
+[    9.293644] NET: Registered protocol family 24
+[    9.299178] usbcore: registered new interface driver r8152
+[    9.305489] usbcore: registered new interface driver lan78xx
+[    9.312035] usbcore: registered new interface driver asix
+[    9.317964] usbcore: registered new interface driver ax88179_178a
+[    9.324766] usbcore: registered new interface driver cdc_ether
+[    9.331450] usbcore: registered new interface driver smsc95xx
+[    9.337650] usbcore: registered new interface driver net1080
+[    9.343999] usbcore: registered new interface driver rndis_host
+[    9.350592] usbcore: registered new interface driver cdc_subset
+[    9.357013] usbcore: registered new interface driver zaurus
+[    9.363289] usbcore: registered new interface driver MOSCHIP usb-ethernet driver
+[    9.371458] usbcore: registered new interface driver sierra_net
+[    9.377991] usbcore: registered new interface driver cdc_ncm
+[    9.385037] usbcore: registered new interface driver qmi_wwan
+[    9.391130] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    9.397753] ehci-pci: EHCI PCI platform driver
+[    9.402966] ehci-mxc: Freescale On-Chip EHCI Host driver
+[    9.411771] usbcore: registered new interface driver cdc_acm
+[    9.417542] cdc_acm: USB Abstract Control Model driver for USB modems and ISDN adapters
+[    9.426282] usbcore: registered new interface driver cdc_wdm
+[    9.432835] usbcore: registered new interface driver usb-storage
+[    9.440074] usbcore: registered new interface driver usbserial_generic
+[    9.447853] usbserial: USB Serial support registered for generic
+[    9.454873] usbcore: registered new interface driver option
+[    9.461048] usbserial: USB Serial support registered for GSM modem (1-port)
+[    9.468449] usbcore: registered new interface driver qcaux
+[    9.474512] usbserial: USB Serial support registered for qcaux
+[    9.480981] usbcore: registered new interface driver qcserial
+[    9.487087] usbserial: USB Serial support registered for Qualcomm USB modem
+[    9.494690] usbcore: registered new interface driver sierra
+[    9.500824] usbserial: USB Serial support registered for Sierra USB modem
+[    9.565445] rtc-m41t80 1-0068: registered as rtc0
+[    9.575861] rtc-m41t80 1-0068: setting system clock to 2022-06-02T15:34:55 UTC (1654184095)
+[    9.607459] snvs_rtc 20cc000.snvs:snvs-rtc-lp: registered as rtc1
+[    9.615341] i2c /dev entries driver
+[    9.660762] Bluetooth: HCI UART driver ver 2.3
+[    9.665333] Bluetooth: HCI UART protocol H4 registered
+[    9.671079] Bluetooth: HCI UART protocol LL registered
+[    9.686571] sdhci: Secure Digital Host Controller Interface driver
+[    9.693139] sdhci: Copyright(c) Pierre Ossman
+[    9.697588] sdhci-pltfm: SDHCI platform and OF driver helper
+[    9.725236] sdhci-esdhc-imx 2190000.mmc: Got CD GPIO
+[    9.773701] caam 2140000.crypto: Entropy delay = 3200
+[    9.839870] caam 2140000.crypto: Instantiated RNG4 SH0
+[    9.900618] caam 2140000.crypto: Instantiated RNG4 SH1
+[    9.907112] caam 2140000.crypto: device ID = 0x0a16030000000000 (Era 8)
+[    9.914128] caam 2140000.crypto: job rings = 3, qi = 0
+[    9.922970] mmc0: SDHCI controller on 2190000.mmc [2190000.mmc] using ADMA
+[    9.948007] mmc1: SDHCI controller on 2194000.mmc [2194000.mmc] using ADMA
+[   10.013225] mmc0: host does not support reading read-only switch, assuming write-enable
+[   10.031600] mmc0: new high speed SDHC card at address 0001
+[   10.064257] mmcblk0: mmc0:0001 SD16G 14.5 GiB 
+[   10.123506]  mmcblk0: p1 p2
+[   10.194602] caam algorithms registered in /proc/crypto
+[   10.223171] caam 2140000.crypto: caam pkc algorithms registered in /proc/crypto
+[   10.234827] caam 2140000.crypto: registering rng-caam
+[   10.266630] usbcore: registered new interface driver usbhid
+[   10.272731] usbhid: USB HID core driver
+[   10.389866] NET: Registered protocol family 10
+[   10.408021] Segment Routing with IPv6
+[   10.413388] sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+[   10.427483] random: crng init done
+[   10.435709] NET: Registered protocol family 17
+[   10.441361] can: controller area network core
+[   10.446947] NET: Registered protocol family 29
+[   10.452001] can: raw protocol
+[   10.456079] can: broadcast manager protocol
+[   10.460957] can: netlink gateway - max_hops=1
+[   10.468286] Key type dns_resolver registered
+[   10.503939] cpu cpu0: Using anatop regulators: LDOs enabled
+[   10.527902] Registering SWP/SWPB emulation handler
+[   10.534532] Loading compiled-in X.509 certificates
+[   10.899386] ci_hdrc ci_hdrc.0: EHCI Host Controller
+[   10.906853] ci_hdrc ci_hdrc.0: new USB bus registered, assigned bus number 1
+[   10.944110] ci_hdrc ci_hdrc.0: USB 2.0 started, EHCI 1.00
+[   10.960726] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 5.10
+[   10.970635] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[   10.978444] usb usb1: Product: EHCI Host Controller
+[   10.983990] usb usb1: Manufacturer: Linux 5.10.76-bsp-yocto-ampliphy-i.mx6ul-pd21.2.1 ehci_hcd
+[   10.993199] usb usb1: SerialNumber: ci_hdrc.0
+[   11.027994] hub 1-0:1.0: USB hub found
+[   11.035785] hub 1-0:1.0: 1 port detected
+[   11.104518] ci_hdrc ci_hdrc.1: EHCI Host Controller
+[   11.110576] ci_hdrc ci_hdrc.1: new USB bus registered, assigned bus number 2
+[   11.144475] ci_hdrc ci_hdrc.1: USB 2.0 started, EHCI 1.00
+[   11.152700] usb usb2: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 5.10
+[   11.161498] usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[   11.168842] usb usb2: Product: EHCI Host Controller
+[   11.174109] usb usb2: Manufacturer: Linux 5.10.76-bsp-yocto-ampliphy-i.mx6ul-pd21.2.1 ehci_hcd
+[   11.183035] usb usb2: SerialNumber: ci_hdrc.1
+[   11.196118] hub 2-0:1.0: USB hub found
+[   11.201152] hub 2-0:1.0: 1 port detected
+[   11.230933] imx_thermal 20c8000.anatop:tempmon: Industrial CPU temperature grade - max:105C critical:100C passive:95C
+[   11.265088] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+[   11.291674] cfg80211: Loaded X.509 cert 'sforshee: 00b28ddf47aef9cea7'
+[   11.303294] platform regulatory.0: Direct firmware load for regulatory.db failed with error -2
+[   11.312950] platform regulatory.0: Falling back to sysfs fallback for: regulatory.db
+[   11.321457] ALSA device list:
+[   11.324896]   No soundcards found.
+[   11.355975] EXT4-fs: Warning: mounting with data=journal disables delayed allocation, dioread_nolock, O_DIRECT and fast_commit support!
+[   11.396555] EXT4-fs (mmcblk0p2): INFO: recovery required on readonly filesystem
+[   11.404690] EXT4-fs (mmcblk0p2): write access will be enabled during recovery
+[   11.413545] usb 1-1: new high-speed USB device number 2 using ci_hdrc
+[   11.544312] EXT4-fs (mmcblk0p2): recovery complete
+[   11.572603] EXT4-fs (mmcblk0p2): mounted filesystem with journalled data mode. Opts: data=journal
+[   11.585167] VFS: Mounted root (ext4 filesystem) readonly on device 179:2.
+[   11.600975] devtmpfs: mounted
+[   11.608487] Freeing unused kernel memory: 1024K
+[   11.614962] Run /sbin/init as init process
+[   11.636630] usb 1-1: New USB device found, idVendor=1ec9, idProduct=0081, bcdDevice= 1.00
+[   11.645733] usb 1-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   11.653284] usb 1-1: Product: Moser Baer Disk
+[   11.657720] usb 1-1: Manufacturer: MBIL SSM
+[   11.662129] usb 1-1: SerialNumber: MB0300073C7F9049735
+[   11.689215] usb-storage 1-1:1.0: USB Mass Storage device detected
+[   11.723929] scsi host0: usb-storage 1-1:1.0
+[   12.684760] systemd[1]: systemd 247 running in system mode. (-PAM -AUDIT -SELINUX -IMA -APPARMOR -SMACK -SYSVINIT -UTMP -LIBCRYPTSETUP -GCRYPT -GNUTLS -ACL -XZ +LZ4)
+[   12.714636] systemd[1]: Detected architecture arm.
+
+Welcome to The ampliPHY Distribution BSP-Yocto-Ampliphy-i.MX6UL-PD21.2.1!
+
+[   12.783417] systemd[1]: Set hostname to <ruggedboard-imx6ul>.
+[   12.814600] scsi 0:0:0:0: Direct-Access     MBIL SSM Moser Baer Disk  PMAP PQ: 0 ANSI: 6
+[   12.875681] sd 0:0:0:0: [sda] 15179776 512-byte logical blocks: (7.77 GB/7.24 GiB)
+[   12.901822] sd 0:0:0:0: [sda] Write Protect is off
+[   12.918723] sd 0:0:0:0: [sda] No Caching mode page found
+[   12.924707] sd 0:0:0:0: [sda] Assuming drive cache: write through
+[   12.978206]  sda: sda1
+[   13.031008] sd 0:0:0:0: [sda] Attached SCSI removable disk
+[   13.107756] systemd[1]: Using hardware watchdog 'imx2+ watchdog', version 0, device /dev/watchdog
+[   13.127182] systemd[1]: Set hardware watchdog to 1min.
+[   15.067082] systemd[1]: Queued start job for default target Multi-User System.
+[   15.095799] systemd[1]: Created slice system-getty.slice.
+[  OK  ] Created slice system-getty.slice.
+[   15.122381] systemd[1]: Created slice system-modprobe.slice.
+[  OK  ] Created slice system-modprobe.slice.
+[   15.182373] systemd[1]: Created slice system-serial\x2dgetty.slice.
+[  OK  ] Created slice system-serial\x2dgetty.slice.
+[   15.259127] systemd[1]: Created slice User and Session Slice.
+[  OK  ] Created slice User and Session Slice.
+[   15.286172] systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
+[  OK  ] Started Dispatch Password ��…ts to Console Directory Watch.
+[   15.343559] systemd[1]: Started Forward Password Requests to Wall Directory Watch.
+[  OK  ] Started Forward Password R��…uests to Wall Directory Watch.
+[   15.393326] systemd[1]: Reached target Paths.
+[  OK  ] Reached target Paths.
+[   15.435247] systemd[1]: Reached target Remote File Systems.
+[  OK  ] Reached target Remote File Systems.
+[   15.461694] systemd[1]: Reached target Slices.
+[  OK  ] Reached target Slices.
+[   15.506777] systemd[1]: Reached target Swap.
+[  OK  ] Reached target Swap.
+[   15.699372] systemd[1]: Listening on RPCbind Server Activation Socket.
+[  OK  ] Listening on RPCbind Server Activation Socket.
+[   15.745018] systemd[1]: Reached target RPC Port Mapper.
+[  OK  ] Reached target RPC Port Mapper.
+[   15.791664] systemd[1]: Condition check resulted in Journal Audit Socket being skipped.
+[   15.806027] systemd[1]: Listening on Journal Socket (/dev/log).
+[  OK  ] Listening on Journal Socket (/dev/log).
+[   15.869369] systemd[1]: Listening on Journal Socket.
+[  OK  ] Listening on Journal Socket.
+[   15.926825] systemd[1]: Listening on Network Service Netlink Socket.
+[  OK  ] Listening on Network Service Netlink Socket.
+[   16.001727] systemd[1]: Listening on udev Control Socket.
+[  OK  ] Listening on udev Control Socket.
+[   16.032717] systemd[1]: Listening on udev Kernel Socket.
+[  OK  ] Listening on udev Kernel Socket.
+[   16.055965] systemd[1]: Condition check resulted in Huge Pages File System being skipped.
+[   16.067509] systemd[1]: Condition check resulted in POSIX Message Queue File System being skipped.
+[   16.103402] systemd[1]: Mounting Kernel Debug File System...
+         Mounting Kernel Debug File System...
+[   16.203115] systemd[1]: Mounting Kernel Trace File System...
+         Mounting Kernel Trace File System...
+[   16.301634] systemd[1]: Mounting Temporary Directory (/tmp)...
+         Mounting Temporary Directory (/tmp)...
+[   16.342098] systemd[1]: Condition check resulted in Create list of static device nodes for the current kernel being skipped.
+[   16.386840] systemd[1]: Starting Load Kernel Module configfs...
+         Starting Load Kernel Module configfs...
+[   16.464426] systemd[1]: Starting Load Kernel Module drm...
+         Starting Load Kernel Module drm...
+[   16.551879] systemd[1]: Starting Load Kernel Module fuse...
+         Starting Load Kernel Module fuse...
+[   16.621511] systemd[1]: Starting Start psplash boot splash screen...
+         Starting Start psplash boot splash screen...
+[   16.704248] systemd[1]: Starting RPC Bind...
+         Starting RPC Bind...
+[   16.836574] systemd[1]: Starting File System Check on Root Device...
+         Starting File System Check on Root Device...
+[   17.033472] systemd[1]: Starting Journal Service...
+         Starting Journal Service...
+[   17.133589] systemd[1]: Condition check resulted in Load Kernel Modules being skipped.
+[   17.214412] systemd[1]: Starting Apply Kernel Variables...
+         Starting Apply Kernel Variables...
+[   17.373788] systemd[1]: Starting Coldplug All udev Devices...
+         Starting Coldplug All udev Devices...
+[   17.835684] systemd[1]: Started RPC Bind.
+[  OK  ] Started RPC Bind.
+[   17.874941] systemd[1]: Mounted Kernel Debug File System.
+[  OK  ] Mounted Kernel Debug File System   17.944567] systemd[1]: Mounted Kernel Trace File System.
+m.
+[  OK  ] Mounted Kernel Trace File System   17.984485] systemd[1]: Mounted Temporary Directory (/tmp).
+m.
+[  OK  ] Mounted Temporary Directory (/tmp).
+[   18.075186] systemd[1]: modprobe@configfs.service: Succeeded.
+[   18.210717] systemd[1]: Finished Load Kernel Module configfs.
+[  OK  ] Finished Load Kernel Module configfs.
+[   18.286990] systemd[1]: modprobe@drm.service: Succeeded.
+[   18.353524] systemd[1]: Finished Load Kernel Module drm.
+[  OK  ] Finished Load Kernel Module drm.
+[   18.443820] systemd[1]: modprobe@fuse.service: Succeeded.
+[   18.511011] systemd[1]: Finished Load Kernel Module fuse.
+[  OK  ] Finished Load Kernel Module fuse.
+[   18.544769] systemd[1]: psplash-start.service: Main process exited, code=exited, status=255/EXCEPTION
+[   18.587817] systemd[1]: psplash-start.service: Failed with result 'exit-code'.
+[   18.670516] systemd[1]: Failed to start Start psplash boot splash screen.
+[FAILED] Failed to start Start psplash boot splash screen.
+See 'systemctl status psplash-start.service' for details.
+[   18.730763] systemd[1]: Dependency failed for Start psplash-systemd progress communication helper.
+[DEPEND] Dependency failed for Star��…progress communication helper.
+[   18.800873] systemd[1]: psplash-systemd.service: Job psplash-systemd.service/start failed with result 'dependency'.
+[   18.876672] systemd[1]: Finished File System Check on Root Device.
+[  OK  ] Finished File System Check on Root Device.
+[   18.992537] systemd[1]: Finished Apply Kernel Variables.
+[  OK  ] Finished Apply Kernel Variables.
+[   19.089299] systemd[1]: Mounting FUSE Control File System...
+         Mounting FUSE Control File System...
+[   19.232770] systemd[1]: Mounting Kernel Configuration File System...
+         Mounting Kernel Configuration File System...
+[   19.374452] systemd[1]: Starting Remount Root and Kernel File Systems...
+         Starting Remount Root and Kernel File Systems...
+[   19.545486] systemd[1]: Mounted FUSE Control File System.
+[  OK  ] Mounted FUSE Control File System.
+[   19.604394] systemd[1]: Mounted Kernel Configuration File System.
+[  OK  ] Mounted Kernel Configuration File System.
+[   20.028957] EXT4-fs (mmcblk0p2): re-mounted. Opts: (null)
+[   20.166359] systemd[1]: Finished Remount Root and Kernel File Systems.
+[  OK  ] Finished Remount Root and Kernel File Systems.
+[   20.233530] systemd[1]: Condition check resulted in Platform Persistent Storage Archival being skipped.
+[   20.282240] systemd[1]: Condition check resulted in Create System Users being skipped.
+[   20.355573] systemd[1]: Starting Create Static Device Nodes in /dev...
+         Starting Create Static Device Nodes in /dev...
+[   20.512546] systemd[1]: Started Journal Service.
+[  OK  ] Started Journal Service.
+         Starting Flush Journal to Persistent Storage...
+[   20.982306] systemd-journald[173]: Received client request to flush runtime journal.
+[  OK  ] Finished Create Static Device Nodes in /dev.
+[  OK  ] Finished Flush Journal to Persistent Storage.
+[  OK  ] Reached target Local File Systems (Pre).
+         Mounting /var/volatile...
+         Starting Rule-based Manage��…for Device Events and Files...
+[  OK  ] Mounted /var/volatile.
+[  OK  ] Reached target Local File Systems.
+         Starting Create Volatile Files and Directories...
+[  OK  ] Started Rule-based Manager for Device Events and Files.
+         Starting Network Service...
+[  OK  ] Finished Create Volatile Files and Directories.
+         Starting Network Time Synchronization...
+[  OK  ] Started Network Service.
+         Starting Network Name Resolution...
+[  OK  ] Started Network Time Synchronization.
+[  OK  ] Reached target System Time Set.
+[  OK  ] Reached target System Time Synchronized.
+[  OK  ] Started Network Name Resolution.
+[  OK  ] Reached target Network.
+[  OK  ] Reached target Host and Network Name Lookups.
+[  OK  ] Started NFS status monitor for NFSv2/3 locking..
+[   ***] A start job is running for Coldplug All udev Devices (19s / no limit)
+[  OK  ] Finished Coldplug All udev Devices.
+         Starting Wait for udev To ��…plete Device Initialization...
+[   37.671806] Micrel KSZ8081 or KSZ8091 2188000.ethernet-1:01: attached PHY driver [Micrel KSZ8081 or KSZ8091] (mii_bus:phy_addr=2188000.ethernet-1:01, irq=75)
+[  OK  ] Finished Wait for udev To Complete Device Initialization.
+[  OK  ] Listening on Load/Save RF ��…itch Status /dev/rfkill Watch.
+[  OK  ] Started Hardware RNG Entropy Gatherer Daemon.
+[  OK  ] Reached target System Initialization.
+[  OK  ] Started Daily Cleanup of Temporary Directories.
+[  OK  ] Reached target Timers.
+[  OK  ] Listening on D-Bus System Message Bus Socket.
+[   41.512888] wlan_en: disabling
+[   41.516609] gpio_dvfs: disabling
+         Starting sshd.socket.
+[  OK  ] Listening on sshd.socket.
+[  OK  ] Reached target Sockets.
+[  OK  ] Reached target Basic System.
+[  OK  ] Started D-Bus System Message Bus.
+[  OK  ] Started Start fan control, if configured.
+[  OK  ] Started Linux Firmware Loader Daemon.
+[  OK  ] Started Getty on tty1.
+         Starting Lighttpd Daemon...
+[   42.887153] imx-sdma 20ec000.sdma: loaded firmware 3.5
+         Starting Autostart Qt 5 Demo...
+[  OK  ] Started Serial Getty on ttymxc0.
+[  OK  ] Reached target Login Prompts.
+         Starting User Login Management...
+[  OK  ] Started HawkBit client for Rauc.
+         Starting OpenSSH Key Generation...
+[  OK  ] Started Lighttpd Daemon.
+[  OK  ] Started Autostart Qt 5 Demo.
+[  OK  ] Started User Login Management.
+[  OK  ] Reached target Multi-User System.
+
+ ____   _   _ __   __ _____  _____   ____
+|  _ \ | | | |\ \ / /|_   _|| ____| / ___|
+| |_) || |_| | \ V /   | |  |  _|  | |
+|  __/ |  _  |  | |    | |  | |___ | |___
+|_|    |_| |_|  |_|    |_|  |_____| \____|
+
+    _     __  __  ____   _      ___  ____   _   _ __   __
+   / \   |  \/  ||  _ \ | |    |_ _||  _ \ | | | |\ \ / /
+  / _ \  | |\/| || |_) || |     | | | |_) || |_| | \ V /
+ / ___ \ | |  | ||  __/ | |___  | | |  __/ |  _  |  | |
+/_/   \_\|_|  |_||_|    |_____||___||_|    |_| |_|  |_|
+
+
+ampliPHY (Phytec Base Distribution) BSP-Yocto-Ampliphy-i.MX6UL-PD21.2.1 ruggedboard-imx6ul ttymxc0
+
+barebox 2019.01.0-bsp-yocto-i.mx6ul-pd19.1.0 #1 Wed Jun 8 09:47:52 UTC 2022
+
+
+Board: Phytec phyCORE-i.MX6 Ultra Lite SOM with NAND
+detected i.MX6 UltraLite revision 1.2
+i.MX reset reason POR (SRSR: 0x00000001)
+i.MX6 UltraLite unique ID: d1e090b62b46b9d4
+mdio_bus: miibus0: probed
+eth0: got preset MAC address: 50:2d:f4:24:75:67
+nand: ONFI flash detected
+nand: NAND device: Manufacturer ID: 0x2c, Chip ID: 0xdc (Micron MT29F4G08ABADAH4), 512MiB, page size: 2048, OOB size: 64
+Bad block table found at page 262080, version 0x01
+Bad block table found at page 262016, version 0x01
+imx-usb 2184200.usb@2184200.of: USB EHCI 1.00
+imx-esdhc 2190000.usdhc@2190000.of: registered as mmc0
+state: New state registered 'state'
+state: Using bucket 0@0x00000000
+netconsole: registered as netconsole-1
+phySOM-i.MX6: Using environment in NAND flash
+malloc space: 0x8fe7cee0 -> 0x9fcf9dbf (size 254.5 MiB)
+running /env/bin/init...
+
+Hit m for menu or any key to stop autoboot:    3
+
+type exit to get to the menu
+barebox@Phytec phyCORE-i.MX6 Ultra Lite SOM with NAND:/ boot mmc
+booting 'mmc'
+mmc0: detected SD card version 2.0
+mmc0: registered mmc0
+
+Loading ARM Linux zImage '/mnt/mmc/zImage'
+Loading devicetree from '/mnt/mmc/oftree'
+Failed to fixup node in of_fixup_status+0x1/0x28: No such device
+Failed to fixup node in of_fixup_status+0x1/0x28: No such device
+commandline: consoleblank=0 console=ttymxc0,115200n8  root=/dev/mmcblk0p2 rootflags=data=journal rootwait ro fsck.repair=yes
+Starting kernel in secure mode
+[    0.000000] Booting Linux on physical CPU 0x0
+[    0.000000] Linux version 5.10.76-bsp-yocto-ampliphy-i.mx6ul-pd21.2.1 (oe-user@oe-host) (arm-phytec-linux-gnueabi-gcc (GCC) 10.3.0, GNU ld (GNU Binutils) 2.36.1.2022
+[    0.000000] CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr=10c5387d
+[    0.000000] CPU: div instructions available: patching division code
+[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+[    0.000000] OF: fdt: Machine model: Rugged Board i.MX6 UltraLite
+[    0.000000] Memory policy: Data cache writealloc
+[    0.000000] cma: Reserved 64 MiB at 0x9a000000
+[    0.000000] Zone ranges:
+[    0.000000]   Normal   [mem 0x0000000080000000-0x000000009fffffff]
+[    0.000000]   HighMem  empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000080000000-0x000000009fffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000080000000-0x000000009fffffff]
+[    0.000000] percpu: Embedded 20 pages/cpu s51948 r8192 d21780 u81920
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 130048
+[    0.000000] Kernel command line: consoleblank=0 console=ttymxc0,115200n8  root=/dev/mmcblk0p2 rootflags=data=journal rootwait ro fsck.repair=yes
+[    0.000000] Dentry cache hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 32768 (order: 5, 131072 bytes, linear)
+[    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
+[    0.000000] Memory: 422600K/524288K available (14336K kernel code, 2037K rwdata, 4984K rodata, 1024K init, 6664K bss, 36152K reserved, 65536K cma-reserved, 0K highm)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] Running RCU self tests
+[    0.000000] rcu: Hierarchical RCU implementation.
+[    0.000000] rcu:     RCU event tracing is enabled.
+[    0.000000] rcu:     RCU lockdep checking is enabled.
+[    0.000000] rcu:     RCU restricting CPUs from NR_CPUS=4 to nr_cpu_ids=1.
+[    0.000000]  Tracing variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 10 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=1
+[    0.000000] NR_IRQS: 16, nr_irqs: 16, preallocated irqs: 16
+[    0.000000] random: get_random_bytes called from start_kernel+0x334/0x554 with crng_init=0
+[    0.000000] Switching to timer-based delay loop, resolution 41ns
+[    0.000026] sched_clock: 32 bits at 24MHz, resolution 41ns, wraps every 89478484971ns
+[    0.000109] clocksource: mxc_timer1: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 79635851949 ns
+[    0.004448] Console: colour dummy device 80x30
+[    0.004597] Lock dependency validator: Copyright (c) 2006 Red Hat, Inc., Ingo Molnar
+[    0.004665] ... MAX_LOCKDEP_SUBCLASSES:  8
+[    0.004726] ... MAX_LOCK_DEPTH:          48
+[    0.004785] ... MAX_LOCKDEP_KEYS:        8192
+[    0.004838] ... CLASSHASH_SIZE:          4096
+[    0.004893] ... MAX_LOCKDEP_ENTRIES:     32768
+[    0.004947] ... MAX_LOCKDEP_CHAINS:      65536
+[    0.005002] ... CHAINHASH_SIZE:          32768
+[    0.005059]  memory used by lock dependency info: 4061 kB
+[    0.005113]  memory used for stack traces: 2112 kB
+[    0.005169]  per task-struct memory footprint: 1536 bytes
+[    0.005465] Calibrating delay loop (skipped), value calculated using timer frequency.. 48.00 BogoMIPS (lpj=240000)
+[    0.005592] pid_max: default: 32768 minimum: 301
+[    0.006655] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+[    0.006754] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+[    0.016830] CPU: Testing write buffer coherency: ok
+[    0.019529] CPU0: update cpu_capacity 1024
+[    0.019648] CPU0: thread -1, cpu 0, socket 0, mpidr 80000000
+[    0.028929] Setting up static identity map for 0x80100000 - 0x80100078
+[    0.031109] rcu: Hierarchical SRCU implementation.
+[    0.036589] smp: Bringing up secondary CPUs ...
+[    0.036709] smp: Brought up 1 node, 1 CPU
+[    0.036798] SMP: Total of 1 processors activated (48.00 BogoMIPS).
+[    0.036875] CPU: All CPU(s) started in SVC mode.
+[    0.043958] devtmpfs: initialized
+[    0.153230] VFP support v0.3: implementor 41 architecture 2 part 30 variant 7 rev 5
+[    0.156670] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+[    0.156900] futex hash table entries: 256 (order: 2, 16384 bytes, linear)
+[    0.163358] pinctrl core: initialized pinctrl subsystem
+[    0.180701] NET: Registered protocol family 16
+[    0.268892] DMA: preallocated 256 KiB pool for atomic coherent allocations
+[    0.286500] thermal_sys: Registered thermal governor 'step_wise'
+[    0.287182] cpuidle: using governor menu
+[    0.287665] CPU identified as i.MX6UL, silicon rev 1.2
+[    1.232560] vdd3p0: supplied by regulator-dummy
+[    1.290773] cpu: supplied by regulator-dummy
+[    1.347789] vddsoc: supplied by regulator-dummy
+[    2.604911] random: fast init done
+[    3.113609] No ATAGs?
+[    3.114635] hw-breakpoint: found 5 (+1 reserved) breakpoint and 4 watchpoint registers.
+[    3.114902] hw-breakpoint: maximum watchpoint size is 8 bytes.
+[    3.129690] debugfs: Directory 'dummy-iomuxc-gpr@20e4000' with parent 'regmap' already present!
+[    3.134836] imx6ul-pinctrl 20e0000.pinctrl: initialized IMX pinctrl driver
+[    3.463397] mxs-dma 1804000.dma-apbh: initialized
+[    3.497665] vgaarb: loaded
+[    3.504477] SCSI subsystem initialized
+[    3.509864] usbcore: registered new interface driver usbfs
+[    3.511218] usbcore: registered new interface driver hub
+[    3.511762] usbcore: registered new device driver usb
+[    3.526160] i2c i2c-0: IMX I2C adapter registered
+[    3.537208] i2c i2c-1: IMX I2C adapter registered
+[    3.540284] mc: Linux media interface: v0.10
+[    3.540819] videodev: Linux video capture interface: v2.00
+[    3.543385] pps_core: LinuxPPS API ver. 1 registered
+[    3.543499] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    3.543733] PTP clock support registered
+[    3.549157] Advanced Linux Sound Architecture Driver Initialized.
+[    3.559996] Bluetooth: Core ver 2.22
+[    3.560479] NET: Registered protocol family 31
+[    3.560574] Bluetooth: HCI device and connection manager initialized
+[    3.560966] Bluetooth: HCI socket layer initialized
+[    3.561124] Bluetooth: L2CAP socket layer initialized
+[    3.561660] Bluetooth: SCO socket layer initialized
+[    3.569774] clocksource: Switched to clocksource mxc_timer1
+[    7.035462] VFS: Disk quotas dquot_6.6.0
+[    7.036022] VFS: Dquot-cache hash table entries: 1024 (order 0, 4096 bytes)
+[    7.147692] NET: Registered protocol family 2
+[    7.148933] IP idents hash table entries: 8192 (order: 4, 65536 bytes, linear)
+[    7.156627] tcp_listen_portaddr_hash hash table entries: 256 (order: 1, 11264 bytes, linear)
+[    7.156913] TCP established hash table entries: 4096 (order: 2, 16384 bytes, linear)
+[    7.157203] TCP bind hash table entries: 4096 (order: 5, 163840 bytes, linear)
+[    7.158867] TCP: Hash tables configured (established 4096 bind 4096)
+[    7.161842] UDP hash table entries: 256 (order: 2, 24576 bytes, linear)
+[    7.162260] UDP-Lite hash table entries: 256 (order: 2, 24576 bytes, linear)
+[    7.163936] NET: Registered protocol family 1
+[    7.171875] RPC: Registered named UNIX socket transport module.
+[    7.172195] RPC: Registered udp transport module.
+[    7.172292] RPC: Registered tcp transport module.
+[    7.172375] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    7.177560] PCI: CLS 0 bytes, default 64
+[    7.187872] hw perfevents: enabled with armv7_cortex_a7 PMU driver, 5 counters available
+[    7.206824] Initialise system trusted keyrings
+[    7.209284] workingset: timestamp_bits=30 max_order=17 bucket_order=0
+[    7.294586] NFS: Registering the id_resolver key type
+[    7.295114] Key type id_resolver registered
+[    7.295420] Key type id_legacy registered
+[    7.296640] nfs4filelayout_init: NFSv4 File Layout Driver Registering...
+[    7.296987] nfs4flexfilelayout_init: NFSv4 Flexfile Layout Driver Registering...
+[    7.297564] jffs2: version 2.2. (NAND) �© 2001-2006 Red Hat, Inc.
+[    7.304213] fuse: init (API version 7.32)
+[    7.548478] NET: Registered protocol family 38
+[    7.549025] Key type asymmetric registered
+[    7.549395] Asymmetric key parser 'x509' registered
+[    7.550325] io scheduler mq-deadline registered
+[    7.550438] io scheduler kyber registered
+[    7.625064] imx-sdma 20ec000.sdma: Direct firmware load for imx/sdma/sdma-imx6q.bin failed with error -2
+[    7.625402] imx-sdma 20ec000.sdma: Falling back to sysfs fallback for: imx/sdma/sdma-imx6q.bin
+[    7.651345] 2020000.serial: ttymxc0 at MMIO 0x2020000 (irq = 31, base_baud = 5000000) is a IMX
+[    8.460468] printk: console [ttymxc0] enabled
+[    8.481540] 21e8000.serial: ttymxc1 at MMIO 0x21e8000 (irq = 67, base_baud = 5000000) is a IMX
+[    8.500447] 21ec000.serial: ttymxc2 at MMIO 0x21ec000 (irq = 68, base_baud = 5000000) is a IMX
+[    8.518780] 21f4000.serial: ttymxc4 at MMIO 0x21f4000 (irq = 69, base_baud = 5000000) is a IMX
+[    8.537888] 21fc000.serial: ttymxc5 at MMIO 0x21fc000 (irq = 70, base_baud = 5000000) is a IMX
+[    8.732077] brd: module loaded
+[    8.849252] loop: module loaded
+[    8.854002] at24 0-0052: supply vcc not found, using dummy regulator
+[    8.870853] at24 0-0052: 4096 byte 24c32 EEPROM, writable, 32 bytes/write
+[    8.905321] nand: device found, Manufacturer ID: 0x2c, Chip ID: 0xdc
+[    8.912040] nand: Micron MT29F4G08ABADAH4
+[    8.916163] nand: 512 MiB, SLC, erase size: 128 KiB, page size: 2048, OOB size: 64
+[    8.929295] Bad block table found at page 262080, version 0x01
+[    8.936113] Bad block table found at page 262016, version 0x01
+[    8.943456] 3 fixed-partitions partitions found on MTD device gpmi-nand
+[    8.950393] Creating 3 MTD partitions on "gpmi-nand":
+[    8.955617] 0x000000000000-0x000000400000 : "barebox"
+[    8.989646] 0x000000400000-0x000000500000 : "barebox-environment"
+[    9.015873] 0x000000500000-0x000020000000 : "root"
+[    9.087703] gpmi-nand 1806000.nand-controller: driver registered.
+[    9.163079] libphy: Fixed MDIO Bus: probed
+[    9.173473] CAN device driver interface
+[    9.206741] pps pps0: new PPS source ptp0
+[    9.225387] libphy: fec_enet_mii_bus: probed
+[    9.255259] fec 2188000.ethernet eth0: registered PHC device 0
+[    9.270981] PPP generic driver version 2.4.2
+[    9.277720] PPP BSD Compression module registered
+[    9.282968] PPP Deflate Compression module registered
+[    9.288405] PPP MPPE Compression module registered
+[    9.293644] NET: Registered protocol family 24
+[    9.299178] usbcore: registered new interface driver r8152
+[    9.305489] usbcore: registered new interface driver lan78xx
+[    9.312035] usbcore: registered new interface driver asix
+[    9.317964] usbcore: registered new interface driver ax88179_178a
+[    9.324766] usbcore: registered new interface driver cdc_ether
+[    9.331450] usbcore: registered new interface driver smsc95xx
+[    9.337650] usbcore: registered new interface driver net1080
+[    9.343999] usbcore: registered new interface driver rndis_host
+[    9.350592] usbcore: registered new interface driver cdc_subset
+[    9.357013] usbcore: registered new interface driver zaurus
+[    9.363289] usbcore: registered new interface driver MOSCHIP usb-ethernet driver
+[    9.371458] usbcore: registered new interface driver sierra_net
+[    9.377991] usbcore: registered new interface driver cdc_ncm
+[    9.385037] usbcore: registered new interface driver qmi_wwan
+[    9.391130] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    9.397753] ehci-pci: EHCI PCI platform driver
+[    9.402966] ehci-mxc: Freescale On-Chip EHCI Host driver
+[    9.411771] usbcore: registered new interface driver cdc_acm
+[    9.417542] cdc_acm: USB Abstract Control Model driver for USB modems and ISDN adapters
+[    9.426282] usbcore: registered new interface driver cdc_wdm
+[    9.432835] usbcore: registered new interface driver usb-storage
+[    9.440074] usbcore: registered new interface driver usbserial_generic
+[    9.447853] usbserial: USB Serial support registered for generic
+[    9.454873] usbcore: registered new interface driver option
+[    9.461048] usbserial: USB Serial support registered for GSM modem (1-port)
+[    9.468449] usbcore: registered new interface driver qcaux
+[    9.474512] usbserial: USB Serial support registered for qcaux
+[    9.480981] usbcore: registered new interface driver qcserial
+[    9.487087] usbserial: USB Serial support registered for Qualcomm USB modem
+[    9.494690] usbcore: registered new interface driver sierra
+[    9.500824] usbserial: USB Serial support registered for Sierra USB modem
+[    9.565445] rtc-m41t80 1-0068: registered as rtc0
+[    9.575861] rtc-m41t80 1-0068: setting system clock to 2022-06-02T15:34:55 UTC (1654184095)
+[    9.607459] snvs_rtc 20cc000.snvs:snvs-rtc-lp: registered as rtc1
+[    9.615341] i2c /dev entries driver
+[    9.660762] Bluetooth: HCI UART driver ver 2.3
+[    9.665333] Bluetooth: HCI UART protocol H4 registered
+[    9.671079] Bluetooth: HCI UART protocol LL registered
+[    9.686571] sdhci: Secure Digital Host Controller Interface driver
+[    9.693139] sdhci: Copyright(c) Pierre Ossman
+[    9.697588] sdhci-pltfm: SDHCI platform and OF driver helper
+[    9.725236] sdhci-esdhc-imx 2190000.mmc: Got CD GPIO
+[    9.773701] caam 2140000.crypto: Entropy delay = 3200
+[    9.839870] caam 2140000.crypto: Instantiated RNG4 SH0
+[    9.900618] caam 2140000.crypto: Instantiated RNG4 SH1
+[    9.907112] caam 2140000.crypto: device ID = 0x0a16030000000000 (Era 8)
+[    9.914128] caam 2140000.crypto: job rings = 3, qi = 0
+[    9.922970] mmc0: SDHCI controller on 2190000.mmc [2190000.mmc] using ADMA
+[    9.948007] mmc1: SDHCI controller on 2194000.mmc [2194000.mmc] using ADMA
+[   10.013225] mmc0: host does not support reading read-only switch, assuming write-enable
+[   10.031600] mmc0: new high speed SDHC card at address 0001
+[   10.064257] mmcblk0: mmc0:0001 SD16G 14.5 GiB 
+[   10.123506]  mmcblk0: p1 p2
+[   10.194602] caam algorithms registered in /proc/crypto
+[   10.223171] caam 2140000.crypto: caam pkc algorithms registered in /proc/crypto
+[   10.234827] caam 2140000.crypto: registering rng-caam
+[   10.266630] usbcore: registered new interface driver usbhid
+[   10.272731] usbhid: USB HID core driver
+[   10.389866] NET: Registered protocol family 10
+[   10.408021] Segment Routing with IPv6
+[   10.413388] sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+[   10.427483] random: crng init done
+[   10.435709] NET: Registered protocol family 17
+[   10.441361] can: controller area network core
+[   10.446947] NET: Registered protocol family 29
+[   10.452001] can: raw protocol
+[   10.456079] can: broadcast manager protocol
+[   10.460957] can: netlink gateway - max_hops=1
+[   10.468286] Key type dns_resolver registered
+[   10.503939] cpu cpu0: Using anatop regulators: LDOs enabled
+[   10.527902] Registering SWP/SWPB emulation handler
+[   10.534532] Loading compiled-in X.509 certificates
+[   10.899386] ci_hdrc ci_hdrc.0: EHCI Host Controller
+[   10.906853] ci_hdrc ci_hdrc.0: new USB bus registered, assigned bus number 1
+[   10.944110] ci_hdrc ci_hdrc.0: USB 2.0 started, EHCI 1.00
+[   10.960726] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 5.10
+[   10.970635] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[   10.978444] usb usb1: Product: EHCI Host Controller
+[   10.983990] usb usb1: Manufacturer: Linux 5.10.76-bsp-yocto-ampliphy-i.mx6ul-pd21.2.1 ehci_hcd
+[   10.993199] usb usb1: SerialNumber: ci_hdrc.0
+[   11.027994] hub 1-0:1.0: USB hub found
+[   11.035785] hub 1-0:1.0: 1 port detected
+[   11.104518] ci_hdrc ci_hdrc.1: EHCI Host Controller
+[   11.110576] ci_hdrc ci_hdrc.1: new USB bus registered, assigned bus number 2
+[   11.144475] ci_hdrc ci_hdrc.1: USB 2.0 started, EHCI 1.00
+[   11.152700] usb usb2: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 5.10
+[   11.161498] usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[   11.168842] usb usb2: Product: EHCI Host Controller
+[   11.174109] usb usb2: Manufacturer: Linux 5.10.76-bsp-yocto-ampliphy-i.mx6ul-pd21.2.1 ehci_hcd
+[   11.183035] usb usb2: SerialNumber: ci_hdrc.1
+[   11.196118] hub 2-0:1.0: USB hub found
+[   11.201152] hub 2-0:1.0: 1 port detected
+[   11.230933] imx_thermal 20c8000.anatop:tempmon: Industrial CPU temperature grade - max:105C critical:100C passive:95C
+[   11.265088] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+[   11.291674] cfg80211: Loaded X.509 cert 'sforshee: 00b28ddf47aef9cea7'
+[   11.303294] platform regulatory.0: Direct firmware load for regulatory.db failed with error -2
+[   11.312950] platform regulatory.0: Falling back to sysfs fallback for: regulatory.db
+[   11.321457] ALSA device list:
+[   11.324896]   No soundcards found.
+[   11.355975] EXT4-fs: Warning: mounting with data=journal disables delayed allocation, dioread_nolock, O_DIRECT and fast_commit support!
+[   11.396555] EXT4-fs (mmcblk0p2): INFO: recovery required on readonly filesystem
+[   11.404690] EXT4-fs (mmcblk0p2): write access will be enabled during recovery
+[   11.413545] usb 1-1: new high-speed USB device number 2 using ci_hdrc
+[   11.544312] EXT4-fs (mmcblk0p2): recovery complete
+[   11.572603] EXT4-fs (mmcblk0p2): mounted filesystem with journalled data mode. Opts: data=journal
+[   11.585167] VFS: Mounted root (ext4 filesystem) readonly on device 179:2.
+[   11.600975] devtmpfs: mounted
+[   11.608487] Freeing unused kernel memory: 1024K
+[   11.614962] Run /sbin/init as init process
+[   11.636630] usb 1-1: New USB device found, idVendor=1ec9, idProduct=0081, bcdDevice= 1.00
+[   11.645733] usb 1-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   11.653284] usb 1-1: Product: Moser Baer Disk
+[   11.657720] usb 1-1: Manufacturer: MBIL SSM
+[   11.662129] usb 1-1: SerialNumber: MB0300073C7F9049735
+[   11.689215] usb-storage 1-1:1.0: USB Mass Storage device detected
+[   11.723929] scsi host0: usb-storage 1-1:1.0
+[   12.684760] systemd[1]: systemd 247 running in system mode. (-PAM -AUDIT -SELINUX -IMA -APPARMOR -SMACK -SYSVINIT -UTMP -LIBCRYPTSETUP -GCRYPT -GNUTLS -ACL -XZ +LZ4)
+[   12.714636] systemd[1]: Detected architecture arm.
+
+Welcome to The ampliPHY Distribution BSP-Yocto-Ampliphy-i.MX6UL-PD21.2.1!
+
+[   12.783417] systemd[1]: Set hostname to <ruggedboard-imx6ul>.
+[   12.814600] scsi 0:0:0:0: Direct-Access     MBIL SSM Moser Baer Disk  PMAP PQ: 0 ANSI: 6
+[   12.875681] sd 0:0:0:0: [sda] 15179776 512-byte logical blocks: (7.77 GB/7.24 GiB)
+[   12.901822] sd 0:0:0:0: [sda] Write Protect is off
+[   12.918723] sd 0:0:0:0: [sda] No Caching mode page found
+[   12.924707] sd 0:0:0:0: [sda] Assuming drive cache: write through
+[   12.978206]  sda: sda1
+[   13.031008] sd 0:0:0:0: [sda] Attached SCSI removable disk
+[   13.107756] systemd[1]: Using hardware watchdog 'imx2+ watchdog', version 0, device /dev/watchdog
+[   13.127182] systemd[1]: Set hardware watchdog to 1min.
+[   15.067082] systemd[1]: Queued start job for default target Multi-User System.
+[   15.095799] systemd[1]: Created slice system-getty.slice.
+[  OK  ] Created slice system-getty.slice.
+[   15.122381] systemd[1]: Created slice system-modprobe.slice.
+[  OK  ] Created slice system-modprobe.slice.
+[   15.182373] systemd[1]: Created slice system-serial\x2dgetty.slice.
+[  OK  ] Created slice system-serial\x2dgetty.slice.
+[   15.259127] systemd[1]: Created slice User and Session Slice.
+[  OK  ] Created slice User and Session Slice.
+[   15.286172] systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
+[  OK  ] Started Dispatch Password ��…ts to Console Directory Watch.
+[   15.343559] systemd[1]: Started Forward Password Requests to Wall Directory Watch.
+[  OK  ] Started Forward Password R��…uests to Wall Directory Watch.
+[   15.393326] systemd[1]: Reached target Paths.
+[  OK  ] Reached target Paths.
+[   15.435247] systemd[1]: Reached target Remote File Systems.
+[  OK  ] Reached target Remote File Systems.
+[   15.461694] systemd[1]: Reached target Slices.
+[  OK  ] Reached target Slices.
+[   15.506777] systemd[1]: Reached target Swap.
+[  OK  ] Reached target Swap.
+[   15.699372] systemd[1]: Listening on RPCbind Server Activation Socket.
+[  OK  ] Listening on RPCbind Server Activation Socket.
+[   15.745018] systemd[1]: Reached target RPC Port Mapper.
+[  OK  ] Reached target RPC Port Mapper.
+[   15.791664] systemd[1]: Condition check resulted in Journal Audit Socket being skipped.
+[   15.806027] systemd[1]: Listening on Journal Socket (/dev/log).
+[  OK  ] Listening on Journal Socket (/dev/log).
+[   15.869369] systemd[1]: Listening on Journal Socket.
+[  OK  ] Listening on Journal Socket.
+[   15.926825] systemd[1]: Listening on Network Service Netlink Socket.
+[  OK  ] Listening on Network Service Netlink Socket.
+[   16.001727] systemd[1]: Listening on udev Control Socket.
+[  OK  ] Listening on udev Control Socket.
+[   16.032717] systemd[1]: Listening on udev Kernel Socket.
+[  OK  ] Listening on udev Kernel Socket.
+[   16.055965] systemd[1]: Condition check resulted in Huge Pages File System being skipped.
+[   16.067509] systemd[1]: Condition check resulted in POSIX Message Queue File System being skipped.
+[   16.103402] systemd[1]: Mounting Kernel Debug File System...
+         Mounting Kernel Debug File System...
+[   16.203115] systemd[1]: Mounting Kernel Trace File System...
+         Mounting Kernel Trace File System...
+[   16.301634] systemd[1]: Mounting Temporary Directory (/tmp)...
+         Mounting Temporary Directory (/tmp)...
+[   16.342098] systemd[1]: Condition check resulted in Create list of static device nodes for the current kernel being skipped.
+[   16.386840] systemd[1]: Starting Load Kernel Module configfs...
+         Starting Load Kernel Module configfs...
+[   16.464426] systemd[1]: Starting Load Kernel Module drm...
+         Starting Load Kernel Module drm...
+[   16.551879] systemd[1]: Starting Load Kernel Module fuse...
+         Starting Load Kernel Module fuse...
+[   16.621511] systemd[1]: Starting Start psplash boot splash screen...
+         Starting Start psplash boot splash screen...
+[   16.704248] systemd[1]: Starting RPC Bind...
+         Starting RPC Bind...
+[   16.836574] systemd[1]: Starting File System Check on Root Device...
+         Starting File System Check on Root Device...
+[   17.033472] systemd[1]: Starting Journal Service...
+         Starting Journal Service...
+[   17.133589] systemd[1]: Condition check resulted in Load Kernel Modules being skipped.
+[   17.214412] systemd[1]: Starting Apply Kernel Variables...
+         Starting Apply Kernel Variables...
+[   17.373788] systemd[1]: Starting Coldplug All udev Devices...
+         Starting Coldplug All udev Devices...
+[   17.835684] systemd[1]: Started RPC Bind.
+[  OK  ] Started RPC Bind.
+[   17.874941] systemd[1]: Mounted Kernel Debug File System.
+[  OK  ] Mounted Kernel Debug File System   17.944567] systemd[1]: Mounted Kernel Trace File System.
+m.
+[  OK  ] Mounted Kernel Trace File System   17.984485] systemd[1]: Mounted Temporary Directory (/tmp).
+m.
+[  OK  ] Mounted Temporary Directory (/tmp).
+[   18.075186] systemd[1]: modprobe@configfs.service: Succeeded.
+[   18.210717] systemd[1]: Finished Load Kernel Module configfs.
+[  OK  ] Finished Load Kernel Module configfs.
+[   18.286990] systemd[1]: modprobe@drm.service: Succeeded.
+[   18.353524] systemd[1]: Finished Load Kernel Module drm.
+[  OK  ] Finished Load Kernel Module drm.
+[   18.443820] systemd[1]: modprobe@fuse.service: Succeeded.
+[   18.511011] systemd[1]: Finished Load Kernel Module fuse.
+[  OK  ] Finished Load Kernel Module fuse.
+[   18.544769] systemd[1]: psplash-start.service: Main process exited, code=exited, status=255/EXCEPTION
+[   18.587817] systemd[1]: psplash-start.service: Failed with result 'exit-code'.
+[   18.670516] systemd[1]: Failed to start Start psplash boot splash screen.
+[FAILED] Failed to start Start psplash boot splash screen.
+See 'systemctl status psplash-start.service' for details.
+[   18.730763] systemd[1]: Dependency failed for Start psplash-systemd progress communication helper.
+[DEPEND] Dependency failed for Star��…progress communication helper.
+[   18.800873] systemd[1]: psplash-systemd.service: Job psplash-systemd.service/start failed with result 'dependency'.
+[   18.876672] systemd[1]: Finished File System Check on Root Device.
+[  OK  ] Finished File System Check on Root Device.
+[   18.992537] systemd[1]: Finished Apply Kernel Variables.
+[  OK  ] Finished Apply Kernel Variables.
+[   19.089299] systemd[1]: Mounting FUSE Control File System...
+         Mounting FUSE Control File System...
+[   19.232770] systemd[1]: Mounting Kernel Configuration File System...
+         Mounting Kernel Configuration File System...
+[   19.374452] systemd[1]: Starting Remount Root and Kernel File Systems...
+         Starting Remount Root and Kernel File Systems...
+[   19.545486] systemd[1]: Mounted FUSE Control File System.
+[  OK  ] Mounted FUSE Control File System.
+[   19.604394] systemd[1]: Mounted Kernel Configuration File System.
+[  OK  ] Mounted Kernel Configuration File System.
+[   20.028957] EXT4-fs (mmcblk0p2): re-mounted. Opts: (null)
+[   20.166359] systemd[1]: Finished Remount Root and Kernel File Systems.
+[  OK  ] Finished Remount Root and Kernel File Systems.
+[   20.233530] systemd[1]: Condition check resulted in Platform Persistent Storage Archival being skipped.
+[   20.282240] systemd[1]: Condition check resulted in Create System Users being skipped.
+[   20.355573] systemd[1]: Starting Create Static Device Nodes in /dev...
+         Starting Create Static Device Nodes in /dev...
+[   20.512546] systemd[1]: Started Journal Service.
+[  OK  ] Started Journal Service.
+         Starting Flush Journal to Persistent Storage...
+[   20.982306] systemd-journald[173]: Received client request to flush runtime journal.
+[  OK  ] Finished Create Static Device Nodes in /dev.
+[  OK  ] Finished Flush Journal to Persistent Storage.
+[  OK  ] Reached target Local File Systems (Pre).
+         Mounting /var/volatile...
+         Starting Rule-based Manage��…for Device Events and Files...
+[  OK  ] Mounted /var/volatile.
+[  OK  ] Reached target Local File Systems.
+         Starting Create Volatile Files and Directories...
+[  OK  ] Started Rule-based Manager for Device Events and Files.
+         Starting Network Service...
+[  OK  ] Finished Create Volatile Files and Directories.
+         Starting Network Time Synchronization...
+[  OK  ] Started Network Service.
+         Starting Network Name Resolution...
+[  OK  ] Started Network Time Synchronization.
+[  OK  ] Reached target System Time Set.
+[  OK  ] Reached target System Time Synchronized.
+[  OK  ] Started Network Name Resolution.
+[  OK  ] Reached target Network.
+[  OK  ] Reached target Host and Network Name Lookups.
+[  OK  ] Started NFS status monitor for NFSv2/3 locking..
+[   ***] A start job is running for Coldplug All udev Devices (19s / no limit)
+[  OK  ] Finished Coldplug All udev Devices.
+         Starting Wait for udev To ��…plete Device Initialization...
+[   37.671806] Micrel KSZ8081 or KSZ8091 2188000.ethernet-1:01: attached PHY driver [Micrel KSZ8081 or KSZ8091] (mii_bus:phy_addr=2188000.ethernet-1:01, irq=75)
+[  OK  ] Finished Wait for udev To Complete Device Initialization.
+[  OK  ] Listening on Load/Save RF ��…itch Status /dev/rfkill Watch.
+[  OK  ] Started Hardware RNG Entropy Gatherer Daemon.
+[  OK  ] Reached target System Initialization.
+[  OK  ] Started Daily Cleanup of Temporary Directories.
+[  OK  ] Reached target Timers.
+[  OK  ] Listening on D-Bus System Message Bus Socket.
+[   41.512888] wlan_en: disabling
+[   41.516609] gpio_dvfs: disabling
+         Starting sshd.socket.
+[  OK  ] Listening on sshd.socket.
+[  OK  ] Reached target Sockets.
+[  OK  ] Reached target Basic System.
+[  OK  ] Started D-Bus System Message Bus.
+[  OK  ] Started Start fan control, if configured.
+[  OK  ] Started Linux Firmware Loader Daemon.
+[  OK  ] Started Getty on tty1.
+         Starting Lighttpd Daemon...
+[   42.887153] imx-sdma 20ec000.sdma: loaded firmware 3.5
+         Starting Autostart Qt 5 Demo...
+[  OK  ] Started Serial Getty on ttymxc0.
+[  OK  ] Reached target Login Prompts.
+         Starting User Login Management...
+[  OK  ] Started HawkBit client for Rauc.
+         Starting OpenSSH Key Generation...
+[  OK  ] Started Lighttpd Daemon.
+[  OK  ] Started Autostart Qt 5 Demo.
+[  OK  ] Started User Login Management.
+[  OK  ] Reached target Multi-User System.
+
+ ____   _   _ __   __ _____  _____   ____
+|  _ \ | | | |\ \ / /|_   _|| ____| / ___|
+| |_) || |_| | \ V /   | |  |  _|  | |
+|  __/ |  _  |  | |    | |  | |___ | |___
+|_|    |_| |_|  |_|    |_|  |_____| \____|
+
+    _     __  __  ____   _      ___  ____   _   _ __   __
+   / \   |  \/  ||  _ \ | |    |_ _||  _ \ | | | |\ \ / /
+  / _ \  | |\/| || |_) || |     | | | |_) || |_| | \ V /
+ / ___ \ | |  | ||  __/ | |___  | | |  __/ |  _  |  | |
+/_/   \_\|_|  |_||_|    |_____||___||_|    |_| |_|  |_|
+
+
+ampliPHY (Phytec Base Distribution) BSP-Yocto-Ampliphy-i.MX6UL-PD21.2.1 ruggedboard-imx6ul ttymxc0
+
+ruggedboard-imx6ul login: 

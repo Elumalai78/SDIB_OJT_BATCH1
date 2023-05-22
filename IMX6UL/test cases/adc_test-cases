@@ -1,0 +1,57 @@
+								ADC testcase
+					              	       ***************
+
+							ADC(analog-to-digital conversion)
+
+
+Description
+******************
+
+	Check the board documentation to find out which pins are used for ADC and their voltage range. Connect a voltage source to the ADC pin. You can use a potentiometer or any other adjustable voltage source. Make sure the voltage is within the allowed range of the ADC.
+
+prerequisite:
+*******************
+
+    • Any Phytec Board with images
+    • Potentiometer
+    • iio driver in kernel modules
+    • Required register should be mount.
+
+Test Case:
+******************
+
+    • After board booting connect the Potentiometer signal pin to Analog signal pin.
+    • Give the below command to read the digital value of ADC.
+    • From patchcords will Connect the analog pin and the other side to the ground or voltage flow.
+
+cat /sys/bus/iio/devices/iio\:device0/in_voltage3_raw
+
+*********************************************************************************************
+
+Example:
+******************************
+Description:
+*************
+Hardware: RuggedBoard-i.MX6UL and R218 register also mounted. 
+Here ADC channel is 3, we will try to give 5v or GND.
+
+root@ruggedboard-imx6ul:iio# cd /sys/bus/iio/devices/iio\:device0/
+root@ruggedboard-imx6ul:iio:device0# 
+root@ruggedboard-imx6ul:iio:device0# 
+root@ruggedboard-imx6ul:iio:device0# 
+root@ruggedboard-imx6ul:iio:device0# 
+root@ruggedboard-imx6ul:iio:device0# ls
+buffer/                        in_voltage3_raw
+power/                         in_voltage_sampling_frequency
+scan_elements/                 in_voltage_scale
+trigger/                       name
+dev                            of_node@
+in_conversion_mode             sampling_frequency_available
+in_voltage0_raw                subsystem@
+in_voltage1_raw                uevent
+in_voltage2_raw
+root@ruggedboard-imx6ul:iio:device0# cat in_voltage3_raw
+4095
+root@ruggedboard-imx6ul:iio:device0# cat in_voltage3_raw
+0
+

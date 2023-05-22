@@ -1,0 +1,81 @@
+										ETHERNET
+									**************************
+
+Description:
+*****************
+    •Connect the board to a network. Connect the Ethernet port on the iMX6UL board to a network switch or router using an Ethernet cable. Check the Ethernet configuration on the board. Make sure the Ethernet port on the board is enabled and configured with the correct IP address, subnet mask, gateway, and DNS settings. You can check the configuration by running the ifconfig command in a terminal window.
+
+prerequisite:
+***************
+    • Ethernet Switch / Hub / Router, Ethernet cable.
+
+Test cases
+******************
+1. Make sure the network configuration & connection between Host & Target is established, connected to same switch / router.
+2. Boot the board and Before the ping test for Ethernet in Linux, we need to set the ip address by using below command on the target board. Make sure both the Target and Host are in the same sub-net
+		$ ifconfig eth0 192.168.x.xx up
+3.Next ping to google by using below command.
+		$ ping google.com
+
+
+*****************************************************************************************************
+Example:
+**********
+Description
+***********
+root@ruggedboard-imx6ul:~# ifconfig eth0 192.168.11.20 up
+root@ruggedboard-imx6ul:~# ifconfig 
+can0      Link encap:UNSPEC  HWaddr 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  
+          UP RUNNING NOARP  MTU:16  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:10 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+          Interrupt:34 
+
+eth0      Link encap:Ethernet  HWaddr 50:2D:F4:24:72:47  
+          inet addr:192.168.11.20  Bcast:192.168.3.255  Mask:255.255.255.0
+          inet6 addr: 2406:7400:56:4dfb:522d:f4ff:fe24:7247/64 Scope:Global
+          inet6 addr: fe80::522d:f4ff:fe24:7247/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:13551 errors:0 dropped:1 overruns:0 frame:0
+          TX packets:547 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:1688904 (1.6 MiB)  TX bytes:55344 (54.0 KiB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:2 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:2 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:140 (140.0 B)  TX bytes:140 (140.0 B)
+
+wwan0     Link encap:Ethernet  HWaddr 0E:47:7D:CE:E4:B2  
+          inet6 addr: fe80::c47:7dff:fece:e4b2/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:43 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:0 (0.0 B)  TX bytes:9778 (9.5 KiB)
+
+root@ruggedboard-imx6ul:~# 
+root@ruggedboard-imx6ul:~# ping google.com
+PING google.com (142.250.182.14): 56 data bytes
+64 bytes from 142.250.182.14: seq=0 ttl=116 time=13.365 ms
+64 bytes from 142.250.182.14: seq=1 ttl=116 time=8.825 ms
+64 bytes from 142.250.182.14: seq=2 ttl=116 time=8.819 ms
+64 bytes from 142.250.182.14: seq=3 ttl=116 time=8.717 ms
+64 bytes from 142.250.182.14: seq=4 ttl=116 time=8.660 ms
+64 bytes from 142.250.182.14: seq=5 ttl=116 time=8.866 ms
+64 bytes from 142.250.182.14: seq=6 ttl=116 time=8.735 ms
+64 bytes from 142.250.182.14: seq=7 ttl=116 time=8.755 ms
+64 bytes from 142.250.182.14: seq=8 ttl=116 time=8.710 ms
+64 bytes from 142.250.182.14: seq=9 ttl=116 time=8.700 ms
+^C
+--- google.com ping statistics ---
+10 packets transmitted, 10 packets received, 0% packet loss
+round-trip min/avg/max = 8.660/9.215/13.365 ms
+root@ruggedboard-imx6ul:~# 
+
